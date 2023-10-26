@@ -10,28 +10,31 @@ export default function Header() {
       <div className="col-12">
         <nav className="main-nav">
           {/* ***** Logo Start ***** */}
-          <a href="index.html" className="logo">
+          <Link to="/" className="logo">
             <img src="/assets/images/logo.png" alt="" style={{ width: 158 }} />
-          </a>
+          </Link>
           {/* ***** Logo End ***** */}
           {/* ***** Menu Start ***** */}
           <ul className="nav">
             <li>
-              <Link to="/" className="active">
+              <Link to="/">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/games">Our Shop</Link>
+              <Link to="/games">Games</Link>
             </li>
             <li>
-              <Link to="#">Product Details</Link>
+              <Link to="#">Add Game</Link>
             </li>
             <li>
               <Link to="/contacts">Contact Us</Link>
             </li>
             <li>
               <Link to="/users/login">Sign In</Link>
+            </li>
+            <li>
+              <Link to="/users/login">Logout</Link>
             </li>
           </ul>
           <a className="menu-trigger">

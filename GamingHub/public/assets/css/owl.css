@@ -184,3 +184,34 @@
   z-index: 1;
   height: 100%;
   width: 100%; }
+
+
+
+
+.search-input {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}  
+
+#search {
+  border: 0px solid black;
+  border-radius: 6px;
+}
+
+#searchText {
+  background-color: ghostwhite;
+  border-radius: 6px;
+  padding: 10px;
+  border: none;
+  margin-right: 6px;
+}
+#searchNow{
+  border: none;
+  padding: 10px;
+  border-radius: 12px;
+  font-family: var(--fa-style-family, "Font Awesome 6 Free");
+}
+#searchNow:hover {
+  color: #ee626b;
+}

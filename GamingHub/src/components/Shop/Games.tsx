@@ -1,4 +1,4 @@
-export default function Shop() {
+export default function Games() {
 
     return (
         <>
@@ -8,7 +8,7 @@ export default function Shop() {
       <div className="col-lg-12">
         <h3>Our Shop</h3>
         <span className="breadcrumb">
-          <a href="#">Home</a> &gt; Our Shop
+          <a href="#">Home</a> &gt; Games
         </span>
       </div>
     </div>
@@ -17,6 +17,18 @@ export default function Shop() {
         {/* Shop */}
         <div className="section trending">
   <div className="container">
+        <div className="search-input">
+            <form id="search" action="#">
+              <input
+                type="text"
+                placeholder="Type Something"
+                id="searchText"
+                name="searchKeyword"
+                // onKeyPress="handle"
+              />
+              <button id="searchNow" role="button">Search Now</button>
+            </form>
+          </div>
     <ul className="trending-filter">
       <li>
         <a className="is_active" href="#!" data-filter="*">

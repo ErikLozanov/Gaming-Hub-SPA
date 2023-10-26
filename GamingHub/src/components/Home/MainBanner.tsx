@@ -14,18 +14,6 @@ export default function MainBanner() {
             gaming websites. You can download and use this layout for commercial
             purposes. Please tell your friends about TemplateMo.
           </p>
-          <div className="search-input">
-            <form id="search" action="#">
-              <input
-                type="text"
-                placeholder="Type Something"
-                id="searchText"
-                name="searchKeyword"
-                // onKeyPress="handle"
-              />
-              <button role="button">Search Now</button>
-            </form>
-          </div>
         </div>
       </div>
       <div className="col-lg-4 offset-lg-2">
