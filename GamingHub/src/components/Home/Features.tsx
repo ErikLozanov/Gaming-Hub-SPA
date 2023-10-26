@@ -6,7 +6,7 @@ export default function Features () {
   <div className="container">
     <div className="row">
       <div className="col-lg-3 col-md-6">
-        <a href="#">
+        <div>
           <div className="item">
             <div className="image">
               <img
@@ -17,10 +17,10 @@ export default function Features () {
             </div>
             <h4>Free Storage</h4>
           </div>
-        </a>
+        </div>
       </div>
       <div className="col-lg-3 col-md-6">
-        <a href="#">
+        <div>
           <div className="item">
             <div className="image">
               <img
@@ -31,10 +31,10 @@ export default function Features () {
             </div>
             <h4>User More</h4>
           </div>
-        </a>
+        </div>
       </div>
       <div className="col-lg-3 col-md-6">
-        <a href="#">
+        <div>
           <div className="item">
             <div className="image">
               <img
@@ -45,10 +45,10 @@ export default function Features () {
             </div>
             <h4>Reply Ready</h4>
           </div>
-        </a>
+        </div>
       </div>
       <div className="col-lg-3 col-md-6">
-        <a href="#">
+        <div>
           <div className="item">
             <div className="image">
               <img
@@ -59,7 +59,7 @@ export default function Features () {
             </div>
             <h4>Easy Layout</h4>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </div>

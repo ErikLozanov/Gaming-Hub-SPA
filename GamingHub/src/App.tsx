@@ -1,8 +1,9 @@
-import Features from './components/Features.js';
-import Footer from './components/Footer.js';
-import Header from './components/Header.jsx';
-import MainBanner from './components/MainBanner.js';
-import Trending from './components/Trending.js';
+import Cta from './components/Home/Cta.js';
+import Features from './components/Home/Features.js';
+import Footer from './components/Home/Footer.js';
+import Header from './components/Home/Header.js';
+import MainBanner from './components/Home/MainBanner.js';
+import Trending from './components/Home/Trending.js';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <MainBanner />
       <Features />
       <Trending />
+      <Cta />
      <Footer />
     </>
   )
