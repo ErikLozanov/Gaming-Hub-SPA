@@ -28,7 +28,7 @@ export default function Header() {
               <Link to="#">Add Game</Link>
             </li>
             <li>
-              <Link to="/contacts">Contact Us</Link>
+              <Link to="/contact-us">Contact Us</Link>
             </li>
             <li>
               <Link to="/users/login">Sign In</Link>
