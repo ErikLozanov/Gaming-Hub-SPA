@@ -1,19 +1,17 @@
-import Cta from './components/Home/Cta.js';
-import Features from './components/Home/Features.js';
-import Footer from './components/Home/Footer.js';
+import { Routes, Route } from 'react-router-dom';
+
+import Footer from './components/Footer.js';
 import Header from './components/Home/Header.js';
-import MainBanner from './components/Home/MainBanner.js';
-import Trending from './components/Home/Trending.js';
+import Home from './components/Home/Home.js';
 
 function App() {
 
   return (
     <>
      <Header />
-      <MainBanner />
-      <Features />
-      <Trending />
-      <Cta />
+      <Routes>
+        <Route path='/' element={<Home />} />
+      </Routes>
      <Footer />
     </>
   )
