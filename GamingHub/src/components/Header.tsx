@@ -25,7 +25,10 @@ export default function Header() {
               <Link to="/games">Games</Link>
             </li>
             <li>
-              <Link to="#">Add Game</Link>
+              <Link to="/games/create-game">Add Game</Link>
+            </li>
+            <li>
+              <Link to="#">My Added Games</Link>
             </li>
             <li>
               <Link to="/contact-us">Contact Us</Link>
