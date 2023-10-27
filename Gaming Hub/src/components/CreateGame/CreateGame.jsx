@@ -11,7 +11,7 @@ export default function CreateGame() {
         summary: '',
     });
 
-    const changeHandler = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const changeHandler = (event) => {
         setValues((state) => ({ ...state, [event.target.name]: event.target.value }));
       };
 

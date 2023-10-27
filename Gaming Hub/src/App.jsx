@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Footer from './components/Footer.js';
-import Header from './components/Header.js';
-import Home from './components/Home/Home.js';
-import Games from './components/Shop/Games.js';
-import ContactUs from './components/ContactUs/ContactUs.js';
-import CreateGame from './components/CreateGame/CreateGame.js';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Home from './components/Home/Home';
+import Games from './components/Shop/Games';
+import ContactUs from './components/ContactUs/ContactUs';
+import CreateGame from './components/CreateGame/CreateGame';
 
 function App() {
 
