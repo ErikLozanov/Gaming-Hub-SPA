@@ -3,14 +3,16 @@ const router = require('express').Router();
 const userManager = require('../managers/userManager');
 
 router.post('/register',async (req, res) => {
+        const {email} = req.body;
+
     try {
-        const result = await userManager.register(req.body);
+        const result = await userManager.register(email);
 
         res.json(result);
         
     } catch (err) {
         res.status(400).json({
-            message: 'Some Error',
+            message: 'Email already exists!',
         })
     }
 });

@@ -37,7 +37,7 @@ export default function Header() {
               <Link to="/users/login">Sign In</Link>
             </li>
             <li>
-              <Link to="/users/login">Logout</Link>
+              <Link to="/users/logout">Logout</Link>
             </li>
           </ul>
           <a className="menu-trigger">

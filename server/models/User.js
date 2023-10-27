@@ -6,12 +6,20 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: [true, 'Email is required!'],
+        unique: true
     },
     password: {
         type: String,
         required: [true, 'Password is required!'],
 
     },
+});
+
+userSchema.virtual('repeatPassword')
+.set(function(value) {
+    if (this.password !== value) {
+        throw new Error('Password missmatch!')
+    }
 });
 
 userSchema.pre('save', async function() {
