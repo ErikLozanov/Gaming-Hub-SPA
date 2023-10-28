@@ -87,3 +87,15 @@ export async function logout() {
 
     return result;
 }
+
+
+export const requestFactory = (token) => {
+    if(!token) {
+        const serializedAuth = sessionStorage.getItem('auth');
+    }
+
+    if(serializedAuth) {
+        const auth = JSON.parse(serializedAuth);
+        token = auth.accessToken;
+    }
+}
