@@ -7,11 +7,12 @@ import Games from './components/Shop/Games';
 import ContactUs from './components/ContactUs/ContactUs';
 import CreateGame from './components/CreateGame/CreateGame';
 import Login from './components/SignIn/Login';
+import AuthProvider from './contexts/AuthContext';
 
 function App() {
 
   return (
-    <>
+    <AuthProvider>
      <Header />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -21,7 +22,7 @@ function App() {
         <Route path='/users/login' element={<Login />} />
       </Routes>
      <Footer />
-    </>
+    </AuthProvider>
   )
 }
 
