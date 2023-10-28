@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { createContext, useContext } from 'react';
 
-import {useSessionStorage} from '../hooks/useSessionStorage';
+import useSessionStorage from '../hooks/useSessionStorage';
 import {login, register, logout} from '../services/authService';
 
 
