@@ -4,14 +4,15 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 import useForm from "../../hooks/useForm";
 
-export default function Login() {
-    const { onLoginSubmit } = useAuthContext();
+export default function Register() {
+    const { onRegisterSubmit } = useAuthContext();
     const { values, changeHandler, onSubmit } = useForm(
         {
             email: "",
             password: "",
+            repeatPassword: "",
         },
-        onLoginSubmit
+        onRegisterSubmit
     );
 
     return (
@@ -22,7 +23,7 @@ export default function Login() {
                         <div className="col-lg-12">
                             <h3>Sign In</h3>
                             <span className="breadcrumb">
-                                <Link to="/">Home</Link> &gt; Sign In
+                                <Link to="/">Home</Link> &gt; Sign Up
                             </span>
                         </div>
                     </div>
@@ -31,37 +32,6 @@ export default function Login() {
             <div className="main">
                 <input type="checkbox" id="chk" aria-hidden="true" />
                 <div className="signup">
-                    <form onSubmit={onSubmit}>
-                        <label htmlFor="chk" aria-hidden="true">
-                            Sign in
-                        </label>
-                        <input
-                            type="text"
-                            name="email"
-                            value={values.email}
-                            placeholder="Email"
-                            onChange={changeHandler}
-                            required
-                        />
-                        <input
-                            type="password"
-                            name="password"
-                            value={values.password}
-                            placeholder="Password"
-                            onChange={changeHandler}
-                            required
-                        />
-                        <button>Sign in</button>
-                    </form>
-                    <p className="register-redirect">Don't have an account? <Link to='/users/register'>Click Here</Link> to register.</p>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-{
-    /* <div className="signup">
 <form onSubmit={onSubmit}>
     <label htmlFor="chk" aria-hidden="true">
         Sign up
@@ -92,5 +62,10 @@ export default function Login() {
     />
     <button>Sign up</button>
 </form>
-</div> */
+</div> 
+            </div>
+        </div>
+    );
 }
+
+

@@ -307,3 +307,10 @@ button:hover{
 #sign-up {
   color: white;
 }
+
+
+.register-redirect {
+  margin: auto;
+  width: 400px;
+  margin-top: 80px;
+}

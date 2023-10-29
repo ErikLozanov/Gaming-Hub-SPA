@@ -8,6 +8,7 @@ import ContactUs from './components/ContactUs/ContactUs';
 import CreateGame from './components/CreateGame/CreateGame';
 import Login from './components/SignIn/Login';
 import AuthProvider from './contexts/AuthContext';
+import Register from './components/SignIn/Register';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/contact-us' element={<ContactUs />} />
         <Route path='/games/create-game' element={<CreateGame />} />
         <Route path='/users/login' element={<Login />} />
+        <Route path='/users/register' element={<Register />} />
       </Routes>
      <Footer />
     </AuthProvider>
