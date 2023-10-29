@@ -9,6 +9,7 @@ import CreateGame from './components/CreateGame/CreateGame';
 import Login from './components/SignIn/Login';
 import AuthProvider from './contexts/AuthContext';
 import Register from './components/SignIn/Register';
+import { Logout } from './components/SignIn/Logout';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/games/create-game' element={<CreateGame />} />
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/register' element={<Register />} />
+        <Route path='/users/logout' element={<Logout />} />
       </Routes>
      <Footer />
     </AuthProvider>

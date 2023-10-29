@@ -18,9 +18,9 @@ router.post('/register',async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-
+    const {email} = req.body;
     try {
-        const result = await userManager.login(req.body);
+        const result = await userManager.login(email);
 
         res.json(result);
     } catch (err) {
