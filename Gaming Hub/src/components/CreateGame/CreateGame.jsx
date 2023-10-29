@@ -1,57 +1,92 @@
-import { Link } from 'react-router-dom';
-import {useState, ChangeEvent} from 'react';
+import { Link } from "react-router-dom";
+import useForm from '../../hooks/useForm';
 
-export default function CreateGame() {
+export default function CreateGame({onCreateGameSubmit}) {
 
-    const [values, setValues] = useState({
-        title: '',
-        category: '',
-        maxLevel: '',
-        imageUrl: '',
-        summary: '',
-    });
-
-    const changeHandler = (event) => {
-        setValues((state) => ({ ...state, [event.target.name]: event.target.value }));
-      };
+    const {values, changeHandler, onSubmit,} = useForm({
+        title: "",
+        category: "",
+        maxLevel: "",
+        imageUrl: "",
+        summary: "",
+    }, onCreateGameSubmit);
 
     return (
         <>
-                <div className="page-heading header-text">
-  <div className="container">
-    <div className="row">
-      <div className="col-lg-12">
-        <h3>Add Game</h3>
-        <span className="breadcrumb">
-          <Link to="/">Home</Link> &gt; <Link to="/games">Games</Link> &gt; Add Game
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
-        <section id="create-page" className="auth">
-        <form id="create" method="post">
-            <div className="container">
-                <h1>Create Game</h1>
-
-                <label htmlFor="leg-title">Legendary title:</label>
-                <input value={values.title} onChange={changeHandler} type="text" id="title" name="title" placeholder="Enter game title..." />
-
-                <label htmlFor="category">Category:</label>
-                <input value={values.category} onChange={changeHandler} type="text" id="category" name="category" placeholder="Enter game category..." />
-
-                <label htmlFor="levels">MaxLevel:</label>
-                <input value={values.maxLevel} onChange={changeHandler} type="number" id="maxLevel" name="maxLevel" min="1" placeholder="1" />
-
-                <label htmlFor="game-img">Image:</label>
-                <input value={values.imageUrl} onChange={changeHandler} type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..." />
-
-                <label htmlFor="summary">Summary:</label>
-                <textarea name="summary" id="summary" value={values.summary} onChange={changeHandler}></textarea>
-                <input className="btn submit" type="submit" value="Create Game" />
+            <div className="page-heading header-text">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <h3>Add Game</h3>
+                            <span className="breadcrumb">
+                                <Link to="/">Home</Link> &gt;{" "}
+                                <Link to="/games">Games</Link> &gt; Add Game
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
-    </section>
+            <section id="create-game">
+                <form id="#" onSubmit={onSubmit}>
+                    <div className="container">
+                        <h1>Create Game</h1>
+
+                        <label htmlFor="leg-title">Legendary title:</label>
+                        <input
+                            value={values.title}
+                            onChange={changeHandler}
+                            type="text"
+                            id="title"
+                            name="title"
+                            placeholder="Enter game title..."
+                        />
+
+                        <label htmlFor="category">Category:</label>
+                        <input
+                            value={values.category}
+                            onChange={changeHandler}
+                            type="text"
+                            id="category"
+                            name="category"
+                            placeholder="Enter game category..."
+                        />
+
+                        <label htmlFor="levels">MaxLevel:</label>
+                        <input
+                            value={values.maxLevel}
+                            onChange={changeHandler}
+                            type="number"
+                            id="maxLevel"
+                            name="maxLevel"
+                            min="1"
+                            placeholder="1"
+                        />
+
+                        <label htmlFor="game-img">Image:</label>
+                        <input
+                            value={values.imageUrl}
+                            onChange={changeHandler}
+                            type="text"
+                            id="imageUrl"
+                            name="imageUrl"
+                            placeholder="Upload a photo..."
+                        />
+
+                        <label htmlFor="summary">Summary:</label>
+                        <textarea
+                            name="summary"
+                            id="summary"
+                            value={values.summary}
+                            onChange={changeHandler}
+                        ></textarea>
+                        <input
+                            className="btn submit"
+                            type="submit"
+                            value="Create Game"
+                        />
+                    </div>
+                </form>
+            </section>
         </>
     );
 }

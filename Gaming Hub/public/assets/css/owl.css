@@ -314,3 +314,8 @@ button:hover{
   width: 400px;
   margin-top: 80px;
 }
+
+
+#create-game {
+visibility: hidden; 
+}

@@ -2,16 +2,20 @@ const mongoose = require('mongoose');
 
 
 const gameSchema = new mongoose.Schema({
-    make: {
+    title: {
         type: String,
         required: true,
     },
-    model: {
+    category: {
         type: String,
         required: true,
     },
     year: {
-        type: String,
+        type: Number,
+        required: true,
+    },
+    maxLevel: {
+        type: Number,
         required: true,
     },
     description: {
@@ -19,14 +23,10 @@ const gameSchema = new mongoose.Schema({
         required: true,
     },
     price: {
-        type: String,
+        type: Number,
         required: true,
     },
     img: {
-        type: String,
-        required: true,
-    },
-    material: {
         type: String,
         required: true,
     },
