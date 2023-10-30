@@ -90,8 +90,10 @@ export async function logout() {
 
 
 export const requestFactory = (token) => {
+    let serializedAuth;
+    
     if(!token) {
-        const serializedAuth = sessionStorage.getItem('auth');
+        serializedAuth = sessionStorage.getItem('auth');
     }
 
     if(serializedAuth) {
