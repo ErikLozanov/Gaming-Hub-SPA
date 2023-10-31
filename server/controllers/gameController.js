@@ -10,11 +10,9 @@ router.get('/', async (req, res) => {
 })
 
 router.post("/", async (req, res) => {
+    console.log(req.body);
     try {
-        await gameManager.create({
-            ...req.body,
-            _ownerId: req.user._id
-        });
+        await gameManager.create(req.body);
 
         res.status(204).end();
     } catch (err) {

@@ -67,11 +67,11 @@ export default function CreateGame({ onCreateGameSubmit }) {
 
                         <label htmlFor="game-img">Image:</label>
                         <input
-                            value={values.imageUrl}
+                            value={values.img}
                             onChange={changeHandler}
                             type="text"
-                            id="imageUrl"
-                            name="imageUrl"
+                            id="img"
+                            name="img"
                             placeholder="Upload a photo..."
                         />
 
@@ -81,6 +81,7 @@ export default function CreateGame({ onCreateGameSubmit }) {
                             id="description"
                             value={values.description}
                             onChange={changeHandler}
+
                         ></textarea>
                         <label htmlFor="game-price">Price:</label>
                         <input
@@ -91,7 +92,7 @@ export default function CreateGame({ onCreateGameSubmit }) {
                             name="price"
                         />
                         <input
-                            className="btn submit"
+                            className="add-game-btn"
                             type="submit"
                             value="Create Game"
                         />

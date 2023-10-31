@@ -12,7 +12,12 @@ exports.getAll = async (qs) => {
 
 exports.getOne = (gameId) => Game.findById(gameId);
 
-exports.create = (gameData) => Game.create(gameData);
+exports.create = (gameData) => {
+    console.log(gameData);
+
+    
+    return Game.create(gameData);
+}
 
 exports.update = (gameId, gameData) => Game.findByIdAndUpdate(gameId, gameData);
 

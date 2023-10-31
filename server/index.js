@@ -3,7 +3,6 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const routes = require('./routes');
-const {auth} = require('./middlewares/authMiddleware');
 
 const app = express();
 

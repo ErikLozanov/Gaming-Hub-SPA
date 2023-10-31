@@ -334,7 +334,20 @@ button:hover{
 
 #create-game .container textarea {
   resize: none;
-  width: 300px;
+  width: 600px;
   height: 150px;
+  margin: auto;
+}
+
+#create-game .container .add-game-btn {
+  padding-bottom: 40px;
   text-align: center;
+  margin: auto;
+  width: 200px;
+}
+
+#create-game .container .add-game-btn:hover {
+  background-color: #1387f7;
+  transition: all .4s ease;
+-webkit-transition: all .4s ease;
 }

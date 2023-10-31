@@ -18,10 +18,9 @@ function App() {
   const navigate = useNavigate();
   const [games,setGames] = useState([]);
   const gameService = gameServiceFactory();
-
-
   const onCreateGameSubmit = async (data) => {
-    const newGame = await gameService.create(data);
+    const userId = sessionStorage.getItem('userId');
+    const newGame = await gameService.create({...data, _ownerId: userId});
 
     setGames(state => [...state, newGame]);
 
