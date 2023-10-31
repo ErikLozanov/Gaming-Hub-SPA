@@ -14,10 +14,6 @@ const gameSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    maxLevel: {
-        type: Number,
-        required: true,
-    },
     description: {
         type: String,
         required: true,

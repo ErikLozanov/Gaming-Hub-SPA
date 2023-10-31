@@ -317,5 +317,24 @@ button:hover{
 
 
 #create-game {
-visibility: hidden; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#create-game .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#create-game .container label {
+  margin: 0;
+}
+
+#create-game .container textarea {
+  resize: none;
+  width: 300px;
+  height: 150px;
+  text-align: center;
 }

@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
-import useForm from '../../hooks/useForm';
+import useForm from "../../hooks/useForm";
 
-export default function CreateGame({onCreateGameSubmit}) {
-
-    const {values, changeHandler, onSubmit,} = useForm({
-        title: "",
-        category: "",
-        maxLevel: "",
-        imageUrl: "",
-        summary: "",
-    }, onCreateGameSubmit);
+export default function CreateGame({ onCreateGameSubmit }) {
+    const { values, changeHandler, onSubmit } = useForm(
+        {
+            title: "",
+            category: "",
+            year: "",
+            img: "",
+            description: "",
+            price: "",
+        },
+        onCreateGameSubmit
+    );
 
     return (
         <>
@@ -51,13 +54,13 @@ export default function CreateGame({onCreateGameSubmit}) {
                             placeholder="Enter game category..."
                         />
 
-                        <label htmlFor="levels">MaxLevel:</label>
+                        <label htmlFor="year">Year:</label>
                         <input
-                            value={values.maxLevel}
+                            value={values.year}
                             onChange={changeHandler}
                             type="number"
-                            id="maxLevel"
-                            name="maxLevel"
+                            id="year"
+                            name="year"
                             min="1"
                             placeholder="1"
                         />
@@ -72,13 +75,21 @@ export default function CreateGame({onCreateGameSubmit}) {
                             placeholder="Upload a photo..."
                         />
 
-                        <label htmlFor="summary">Summary:</label>
+                        <label htmlFor="description">Description:</label>
                         <textarea
-                            name="summary"
-                            id="summary"
-                            value={values.summary}
+                            name="description"
+                            id="description"
+                            value={values.description}
                             onChange={changeHandler}
                         ></textarea>
+                        <label htmlFor="game-price">Price:</label>
+                        <input
+                            value={values.price}
+                            onChange={changeHandler}
+                            type="number"
+                            id="price"
+                            name="price"
+                        />
                         <input
                             className="btn submit"
                             type="submit"
