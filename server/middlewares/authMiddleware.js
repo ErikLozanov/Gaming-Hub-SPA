@@ -9,9 +9,7 @@ exports.auth = (req, res, next) => {
     if(token) {
         try {
             const decodedToken = jwt.verify(token, SECRET);
-            console.log(decodedToken);
             req.user = decodedToken;
-            console.log(req.user);
             next();
         } catch (err) {
             res.clearCookie(TOKEN_KEY);

@@ -6,9 +6,7 @@ exports.register =async (userData) => {
     const isValidEmail = await User.findOne({email: userData.email});
     console.log(isValidEmail);
         if(!isValidEmail) {
-            console.log('hi!');
             const user = await User.create(userData);
-            console.log(user);
             const result = getAuthResult(user);
             return result;
         } else {

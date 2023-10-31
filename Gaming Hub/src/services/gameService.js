@@ -7,9 +7,8 @@ export const gameServiceFactory = (token) => {
 
     const getAll = async () => {
         const result = await get(baseUrl);
-        const games = Object.values(result);
     
-        return games;
+        return result;
     };
     
     const getOne = async (gameId) => {

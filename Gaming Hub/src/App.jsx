@@ -12,12 +12,22 @@ import Register from './components/SignIn/Register';
 import { Logout } from './components/SignIn/Logout';
 
 import {gameServiceFactory} from './services/gameService';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const navigate = useNavigate();
   const [games,setGames] = useState([]);
   const gameService = gameServiceFactory();
+
+  useEffect(() => {
+    gameService.getAll()
+    .then(result => {
+      console.log(games);
+      setGames(result);
+      console.log(games);
+    })
+  },[]);
+
   const onCreateGameSubmit = async (data) => {
     const userId = sessionStorage.getItem('userId');
     const newGame = await gameService.create({...data, _ownerId: userId});
@@ -31,7 +41,7 @@ function App() {
      <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/games' element={<Games />} />
+        <Route path='/games' element={<Games allGames={games} />} />
         <Route path='/contact-us' element={<ContactUs />} />
         <Route path='/games/create-game' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />} />
         <Route path='/users/login' element={<Login />} />

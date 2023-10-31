@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
 })
 
 router.post("/", async (req, res) => {
-    console.log(req.body);
     try {
         await gameManager.create(req.body);
 
