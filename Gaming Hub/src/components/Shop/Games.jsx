@@ -16,7 +16,6 @@ export default function Games({allGames}) {
     </div>
   </div>
 </div>
-        {/* Shop */}
         <div className="section trending">
   <div className="container">
         <div className="search-input">
