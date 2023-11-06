@@ -13,6 +13,7 @@ import { Logout } from './components/SignIn/Logout';
 
 import {gameServiceFactory} from './services/gameService';
 import { useEffect, useState } from 'react';
+import Details from './components/Shop/Details';
 
 function App() {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home allGames={games} />} />
         <Route path='/games' element={<Games allGames={games} />} />
+        <Route path='/games/details/:id' element={<Details />} />
         <Route path='/contact-us' element={<ContactUs />} />
         <Route path='/games/create-game' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />} />
         <Route path='/users/login' element={<Login />} />

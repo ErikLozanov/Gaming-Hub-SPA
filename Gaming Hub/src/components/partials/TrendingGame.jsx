@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
+
 export default function TrendingGame ({game}) {
 
     return (
         <div className="col-lg-3 col-md-6">
         <div className="item">
           <div className="thumb">
-            <a href="product-details.html">
+            <Link to={`/games/details/${game._id}`}>
               <img src={game.img} alt="" />
-            </a>
+            </Link>
             <span className="price">${game.price}</span>
           </div>
           <div className="down-content">
