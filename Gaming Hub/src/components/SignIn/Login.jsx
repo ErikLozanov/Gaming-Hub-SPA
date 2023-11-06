@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
 
 import useForm from "../../hooks/useForm";
+import { useEffect, useRef } from "react";
 
 export default function Login() {
+    const emailRef = useRef();
     const { onLoginSubmit } = useAuthContext();
     const { values, changeHandler, onSubmit } = useForm(
         {
@@ -13,6 +15,10 @@ export default function Login() {
         },
         onLoginSubmit
     );
+
+    useEffect(() => {
+        emailRef.current.focus()
+    },[])
 
     return (
         <div className="sign-page">
@@ -36,6 +42,7 @@ export default function Login() {
                             Sign in
                         </label>
                         <input
+                            ref={emailRef}
                             type="text"
                             name="email"
                             value={values.email}
