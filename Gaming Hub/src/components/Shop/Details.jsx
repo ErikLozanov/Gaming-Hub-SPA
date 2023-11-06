@@ -21,7 +21,7 @@ export default function Details() {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <h3>Modern Warfare® II</h3>
+                            <h3>Details</h3>
                             <span className="breadcrumb">
                                 <Link to="/">Home</Link> &gt; <Link to="/games">Games</Link>{" "}
                                 &gt; {gameInfo.title}
@@ -112,7 +112,7 @@ export default function Details() {
                                         id="myTabContent"
                                     >
                                         <div
-                                            className="tab-pane fade"
+                                            className="tab-pane active"
                                             id="reviews"
                                             role="tabpanel"
                                             aria-labelledby="reviews-tab"
@@ -147,7 +147,7 @@ export default function Details() {
                     </div>
                 </div>
             </div>
-            <div className="section categories related-games">
+            {/* <div className="section categories related-games">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6">
@@ -228,7 +228,7 @@ export default function Details() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 }
