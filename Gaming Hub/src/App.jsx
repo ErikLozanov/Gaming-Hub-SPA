@@ -40,7 +40,7 @@ function App() {
     <AuthProvider>
      <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home allGames={games} />} />
         <Route path='/games' element={<Games allGames={games} />} />
         <Route path='/contact-us' element={<ContactUs />} />
         <Route path='/games/create-game' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />} />

@@ -3,13 +3,13 @@ import Features from "./Features";
 import MainBanner from "./MainBanner";
 import Trending from "./Trending";
 
-export default function Home() {
+export default function Home({allGames}) {
 
     return(
         <>
       <MainBanner />
       <Features />
-      <Trending />
+      <Trending allGames={allGames}/>
       {/* <Cta /> */}
         </>
     );

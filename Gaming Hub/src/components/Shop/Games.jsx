@@ -1,4 +1,4 @@
-import Game from "./partials/game";
+import Game from "../partials/Game";
 
 export default function Games({allGames}) {
     console.log(allGames);
