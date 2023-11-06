@@ -3,6 +3,7 @@ import TrendingGame from "../partials/TrendingGame";
 
 export default function Trending({allGames}) {
 
+  allGames = allGames.slice(0,4);
 
     return (
         <>
@@ -20,7 +21,7 @@ export default function Trending({allGames}) {
           <Link to="/games">View All</Link>
         </div>
       </div>
-      {allGames.map(game => <TrendingGame game={game}/>)}
+      {allGames.map(game => <TrendingGame key={game._id} game={game}/>)}
     </div>
   </div>
 </div>

@@ -22,11 +22,9 @@ function App() {
   useEffect(() => {
     gameService.getAll()
     .then(result => {
-      console.log(games);
       setGames(result);
-      console.log(games);
     })
-  },[games]);
+  },[]);
 
   const onCreateGameSubmit = async (data) => {
     const userId = sessionStorage.getItem('userId');
