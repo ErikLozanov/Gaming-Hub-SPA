@@ -32,8 +32,6 @@ export default function CreateGame({ onCreateGameSubmit }) {
             <section id="create-game">
                 <form id="#" onSubmit={onSubmit}>
                     <div className="container">
-                        <h1>Create Game</h1>
-
                         <label htmlFor="leg-title">Legendary title:</label>
                         <input
                             value={values.title}
