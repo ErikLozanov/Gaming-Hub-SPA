@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 export default function Game({game}) {
@@ -7,16 +8,17 @@ export default function Game({game}) {
         <div className="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 adv">
         <div className="item">
           <div className="thumb">
-            <a href="product-details.html">
+            <Link to={`/games/details/${game._id}`}>
               <img src={game.img} alt="" />
-            </a>
+            </Link>
+            <span className="price">${game.price}</span>
           </div>
           <div className="down-content">
             <span className="category">{game.category}</span>
             <h4>{game.title}</h4>
-            <a href="product-details.html">
+            <Link to={`/games/details/${game._id}`}>
               <i className="fa fa-shopping-bag" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

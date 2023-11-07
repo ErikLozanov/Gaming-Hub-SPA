@@ -14,9 +14,9 @@ export default function TrendingGame ({game}) {
           <div className="down-content">
             <span className="category">{game.category}</span>
             <h4>{game.title}</h4>
-            <a href="product-details.html">
+            <Link to={`/games/details/${game._id}`}>
               <i className="fa fa-shopping-bag" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

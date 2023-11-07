@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { gameServiceFactory } from "../../services/gameService";
-
+import {useAuthContext} from '../../contexts/AuthContext';
 export default function Details() {
     const {id} = useParams();
     const [gameInfo,setGameInfo] = useState({});
-
+    const {isAuthenticated} = useAuthContext();
     const {getOne} = gameServiceFactory()
 
     useEffect(() => {
@@ -49,25 +49,20 @@ export default function Details() {
                             <p>
                                 {gameInfo.description}
                             </p>
+                            {isAuthenticated &&
                             <form id="qty" action="#">
-                                <input
-                                    type="qty"
-                                    className="form-control"
-                                    id={1}
-                                    aria-describedby="quantity"
-                                    placeholder={1}
-                                />
                                 <button type="submit">
                                     <i className="fa fa-shopping-bag" /> ADD TO
                                     CART
                                 </button>
                             </form>
+                            }
                             <ul>
                                 <li>
-                                    <span>Game ID:</span> COD MMII
+                                    <span>Released Year:</span> {gameInfo.year}
                                 </li>
                                 <li>
-                                    <span>Genre:</span> <a href="#">{gameInfo.category}</a>,{" "}
+                                    <span>Genre:</span> <a href="#">{gameInfo.category}</a>{" "}
                                 </li>
                             </ul>
                         </div>
