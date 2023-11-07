@@ -1,11 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 import { useAuthContext } from "../../contexts/AuthContext";
-
 import useForm from "../../hooks/useForm";
+
 
 export default function Register() {
     const { onRegisterSubmit } = useAuthContext();
+    const emailRef = useRef();
     const { values, changeHandler, onSubmit } = useForm(
         {
             email: "",
@@ -14,6 +16,8 @@ export default function Register() {
         },
         onRegisterSubmit
     );
+
+    useEffect(() => {emailRef.current.focus()},[])
 
     return (
         <div className="sign-page">
@@ -39,6 +43,7 @@ export default function Register() {
     <input
         type="text"
         name="email"
+        ref={emailRef}
         value={values.email}
         placeholder="Email"
         onChange={changeHandler}
