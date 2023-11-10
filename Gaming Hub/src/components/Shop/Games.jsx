@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Game from "../partials/Game";
 
 export default function Games({allGames}) {
@@ -10,7 +11,7 @@ export default function Games({allGames}) {
       <div className="col-lg-12">
         <h3>Our Shop</h3>
         <span className="breadcrumb">
-          <a href="#">Home</a> &gt; Games
+          <Link to="/">Home</Link> &gt; Games
         </span>
       </div>
     </div>

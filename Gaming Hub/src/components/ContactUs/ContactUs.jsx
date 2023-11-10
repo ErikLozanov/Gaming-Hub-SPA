@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function ContactUs() {
 
     return (
@@ -8,7 +10,7 @@ export default function ContactUs() {
         <div className="col-lg-12">
           <h3>Contact Us</h3>
           <span className="breadcrumb">
-            <a href="#">Home</a> &gt; Contact Us
+            <Link to="/">Home</Link> &gt; Contact Us
           </span>
         </div>
       </div>
