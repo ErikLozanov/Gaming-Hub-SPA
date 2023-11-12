@@ -5,15 +5,14 @@ import { gameServiceFactory } from "../../services/gameService";
 
 export default function EditGame({ onEditGameSubmit }) {
     
-    const [gameInfo, setGameInfo] = useState({});
-    const { values, changeHandler, onSubmit } = useForm(
+    const { values, changeHandler, onSubmit, changeValues } = useForm(
         {
-            title: gameInfo.title,
-            category: gameInfo.category,
-            year: gameInfo.year,
-            img: gameInfo.img,
-            description: gameInfo.description,
-            price: gameInfo.price,
+            title: '',
+            category: '',
+            year: '',
+            img: '',
+            description: '',
+            price: '',
         },
         onEditGameSubmit
     );
@@ -23,9 +22,9 @@ export default function EditGame({ onEditGameSubmit }) {
 
         useEffect(() => {
             getOne(gameId)
-            .then(res => setGameInfo(res))
+            .then(res => changeValues(res))
             .catch(err => console.log(err.message));
-       },[]);
+       },[gameId]);
 
     return (
         <>
