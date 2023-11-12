@@ -14,6 +14,7 @@ import { Logout } from './components/SignIn/Logout';
 import {gameServiceFactory} from './services/gameService';
 import { useEffect, useState } from 'react';
 import Details from './components/Shop/Details';
+import EditGame from './components/EditGame/EditGame';
 
 function App() {
   const navigate = useNavigate();
@@ -34,6 +35,15 @@ function App() {
     setGames(state => [...state, newGame]);
 
     navigate('/games');
+  };
+
+  const onEditGameSubmit = async (gameId, data) => {
+    const userId = sessionStorage.getItem('userId');
+    const editedGame = await gameService.edit(gameId, {...data, _ownerId: userId});
+
+    setGames(state.map(game => game._id === editedGame._id ? editedGame : game));
+
+    navigate('/games');
   }
   return (
     <AuthProvider>
@@ -44,6 +54,7 @@ function App() {
         <Route path='/games/details/:id' element={<Details />} />
         <Route path='/contact-us' element={<ContactUs />} />
         <Route path='/games/create-game' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />} />
+        <Route path='/games/edit-game/:gameId' element={<EditGame onEditGameSubmit={onEditGameSubmit} />} />
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/register' element={<Register />} />
         <Route path='/users/logout' element={<Logout />} />

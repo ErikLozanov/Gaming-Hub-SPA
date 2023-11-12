@@ -56,8 +56,8 @@ export default function Details() {
 
                             {isOwner ?
                             <div className="owner-btns">    
-                            <button>Edit</button>
-                            <button>Delete</button>
+                            <Link to={`/games/edit-game/${gameInfo._id}`} className="button">Edit</Link>
+                            <Link className="button">Delete</Link>
                             </div>
                             :
                             <form id="qty" action="#">
