@@ -28,7 +28,8 @@ router.get('/:gameId',async (req, res) => {
 });
 
 router.put('/:gameId', async (req, res) => {
-
+    console.log(req.params.gameId);
+    console.log(req.body);
     try {
         await gameManager.update(req.params.gameId, req.body);
 

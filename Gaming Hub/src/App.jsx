@@ -37,13 +37,14 @@ function App() {
     navigate('/games');
   };
 
-  const onEditGameSubmit = async (gameId, data) => {
+  const onEditGameSubmit = async (data) => {
     const userId = sessionStorage.getItem('userId');
-    const editedGame = await gameService.edit(gameId, {...data, _ownerId: userId});
+    console.log(data);
+    const editedGame = await gameService.edit(data._id, data);
 
-    setGames(state.map(game => game._id === editedGame._id ? editedGame : game));
+    setGames(state => state.map(game => game._id === editedGame._id ? editedGame : game));
 
-    navigate('/games');
+    navigate(`/games/details/${data._id}`);
   }
   return (
     <AuthProvider>
