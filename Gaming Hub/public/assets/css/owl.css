@@ -351,3 +351,13 @@ button:hover{
   transition: all .4s ease;
 -webkit-transition: all .4s ease;
 }
+
+
+.owner-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.owner-btns button:hover {
+  background-color: #1f6ab1;
+}

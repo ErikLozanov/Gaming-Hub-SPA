@@ -50,12 +50,18 @@ export default function Details() {
                                 {gameInfo.description}
                             </p>
                             {isAuthenticated &&
+                            <>
                             <form id="qty" action="#">
                                 <button type="submit">
                                     <i className="fa fa-shopping-bag" /> ADD TO
                                     CART
                                 </button>
                             </form>
+                            <div className="owner-btns">
+                            <button>Edit</button>
+                            <button>Delete</button>
+                            </div>
+                            </>
                             }
                             <ul>
                                 <li>
