@@ -6,7 +6,7 @@ import {useAuthContext} from '../../contexts/AuthContext';
 export default function Details() {
     const {id} = useParams();
     const [gameInfo,setGameInfo] = useState({});
-    const {isAuthenticated} = useAuthContext();
+    const {isAuthenticated, userId} = useAuthContext();
     const {getOne} = gameServiceFactory()
 
     useEffect(() => {
@@ -14,6 +14,8 @@ export default function Details() {
          .then(res => setGameInfo(res))
          .catch(err => console.log(err.message));
     },[]);
+
+    const isOwner = gameInfo._ownerId === userId;
 
     return (
         <>
@@ -51,16 +53,20 @@ export default function Details() {
                             </p>
                             {isAuthenticated &&
                             <>
-                            <form id="qty" action="#">
-                                <button type="submit">
-                                    <i className="fa fa-shopping-bag" /> ADD TO
-                                    CART
-                                </button>
-                            </form>
-                            <div className="owner-btns">
+
+                            {isOwner ?
+                            <div className="owner-btns">    
                             <button>Edit</button>
                             <button>Delete</button>
                             </div>
+                            :
+                            <form id="qty" action="#">
+                            <button type="submit">
+                                <i className="fa fa-shopping-bag" /> ADD TO
+                                CART
+                            </button>
+                        </form>
+                            }
                             </>
                             }
                             <ul>

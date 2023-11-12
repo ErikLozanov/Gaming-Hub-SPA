@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import Game from "../partials/Game";
 
 export default function Games({allGames}) {
-    console.log(allGames);
-    return (
+
+  return (
         <>
         <div className="page-heading header-text">
   <div className="container">
