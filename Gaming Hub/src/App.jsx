@@ -15,6 +15,7 @@ import {gameServiceFactory} from './services/gameService';
 import { useEffect, useState } from 'react';
 import Details from './components/Shop/Details';
 import EditGame from './components/EditGame/EditGame';
+import MyAddedGames from './components/MyAddedGames/MyAddedGames';
 
 function App() {
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home allGames={games} />} />
         <Route path='/games' element={<Games allGames={games} />} />
+        <Route path='/games/my-added-games' element={<MyAddedGames />} />
         <Route path='/games/details/:id' element={<Details />} />
         <Route path='/contact-us' element={<ContactUs />} />
         <Route path='/games/create-game' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />} />

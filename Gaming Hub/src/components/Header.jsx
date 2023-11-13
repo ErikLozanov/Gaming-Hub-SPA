@@ -33,7 +33,7 @@ export default function Header() {
               <Link to="/games/create-game">Add Game</Link>
             </li>
             <li>
-              <Link to="#">My Added Games</Link>
+              <Link to="/games/my-added-games">My Added Games</Link>
             </li>
             </>
             }
