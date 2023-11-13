@@ -13,7 +13,6 @@ export const gameServiceFactory = (token) => {
 
     const getAllById = async (userId) => {
         const result = await get(`${baseUrl}/my-added-games/${userId}`);
-        console.log(result);
         return result;
     }
     

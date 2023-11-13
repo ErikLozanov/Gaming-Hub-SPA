@@ -2,19 +2,19 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { gameServiceFactory } from "../../services/gameService";
 import { useAuthContext } from "../../contexts/AuthContext";
+import Game from "../partials/Game";
 
 export default function MyAddedGames () {
     const [myGames,setMyGames] = useState([]);
     const {getAllById} = gameServiceFactory();
     const {userId} = useAuthContext();
-    
+
     useEffect(() => {
       getAllById(userId)
-      .then(res => console.log(res))
+      .then(res => setMyGames(res))
       .catch(err => console.log(err.message));
 
     },[]);
-
     return (
         <>
         <div className="page-heading header-text">
@@ -66,7 +66,9 @@ export default function MyAddedGames () {
       </li>
     </ul>
     <div className="row trending-box">
-      {/* {allGames.map(game => <Game key={game._id} game={game}/>)} */}
+      {myGames.length === 0 ?
+      <h1>You have no games added yet!</h1>
+       : myGames.map(game => <Game key={game._id} game={game}/>)}
     </div>
   </div>
 </div>
