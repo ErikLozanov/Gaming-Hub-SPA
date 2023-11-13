@@ -21,6 +21,16 @@ router.post("/", async (req, res) => {
     }
 });
 
+router.get('/my-added-games/:userId', async (req, res) => {
+
+    const userId = req.params.userId;
+
+    console.log(userId);
+    const games = await gameManager.getByOwner(userId).lean();
+
+    res.json(games);
+});
+
 router.get('/:gameId',async (req, res) => {
     const game = await gameManager.getOne(req.params.gameId);
 
@@ -28,8 +38,6 @@ router.get('/:gameId',async (req, res) => {
 });
 
 router.put('/:gameId', async (req, res) => {
-    console.log(req.params.gameId);
-    console.log(req.body);
     try {
         await gameManager.update(req.params.gameId, req.body);
 
