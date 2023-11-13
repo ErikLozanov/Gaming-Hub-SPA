@@ -1,6 +1,19 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { gameServiceFactory } from "../../services/gameService";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function MyAddedGames () {
+    const [myGames,setMyGames] = useState([]);
+    const {getAllById} = gameServiceFactory();
+    const {userId} = useAuthContext();
+    
+    useEffect(() => {
+      getAllById(userId)
+      .then(res => console.log(res))
+      .catch(err => console.log(err.message));
+
+    },[]);
 
     return (
         <>

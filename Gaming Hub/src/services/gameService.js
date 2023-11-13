@@ -10,6 +10,12 @@ export const gameServiceFactory = (token) => {
     
         return result;
     };
+
+    const getAllById = async (userId) => {
+        const result = await get(`${baseUrl}/my-added-games/${userId}`);
+        console.log(result);
+        return result;
+    }
     
     const getOne = async (gameId) => {
         const result = await get(`${baseUrl}/${gameId}`);
@@ -32,6 +38,7 @@ export const gameServiceFactory = (token) => {
 
     return {
         getAll,
+        getAllById,
         getOne,
         create,
         edit,
