@@ -16,8 +16,9 @@ export const gameServiceFactory = (token) => {
         return result;
     }
 
-    const searchGame = async (title, genre) => {
-        const result = await get(`${baseUrl}`)
+    const searchGame = async (data) => {
+        console.log(data);
+        // const result = await get(`${baseUrl}`);
     }
     
     const getOne = async (gameId) => {
@@ -46,5 +47,6 @@ export const gameServiceFactory = (token) => {
         create,
         edit,
         delete: deleteGame,
+        searchGame
     };
 }
