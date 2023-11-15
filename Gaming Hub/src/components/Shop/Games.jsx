@@ -26,7 +26,6 @@ export default function Games({allGames}) {
                 placeholder="Type Something"
                 id="searchText"
                 name="searchKeyword"
-                // onKeyPress="handle"
               />
               <button id="searchNow" role="button">Search Now</button>
             </form>

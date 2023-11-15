@@ -66,4 +66,13 @@ router.delete('/:gameId', async (req, res) => {
 
 });
 
+router.post('/games', async (req, res) => {
+    const {name, genre} = req.params;
+
+    const games = await gameManager.searchGame(name, genre).lean();
+    console.log(games);
+
+    res.json(games);
+});
+
 module.exports = router;
