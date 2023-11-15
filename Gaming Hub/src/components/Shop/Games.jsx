@@ -20,7 +20,7 @@ export default function Games({allGames}) {
         <div className="section trending">
   <div className="container">
         <div className="search-input">
-            <form id="search" action="#">
+            <form id="search">
               <input
                 type="text"
                 placeholder="Type Something"
