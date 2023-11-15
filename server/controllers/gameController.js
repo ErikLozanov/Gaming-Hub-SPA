@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
     res.json(games);
 });
 
+
 router.post("/create-game", async (req, res) => {
     try {
         const result = await gameManager.create(req.body);
