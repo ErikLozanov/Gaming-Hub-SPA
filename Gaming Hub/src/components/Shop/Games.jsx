@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
 import Game from "../partials/Game";
 import useForm from "../../hooks/useForm";
-import { gameServiceFactory } from "../../services/gameService";
 
-export default function Games({ allGames }) {
+export default function Games({ allGames, searchGame }) {
 
-    const {getAll} = gameServiceFactory();
     const { onSubmit, values, changeHandler } = useForm({
         title: "",
         genre: "",
-    },getAll);
+    },searchGame);
+
     return (
         <>
             <div className="page-heading header-text">
@@ -26,23 +25,26 @@ export default function Games({ allGames }) {
             </div>
             <div className="section trending">
                 <div className="container">
-                    <div className="search-input">
-                        <form onSubmit={onSubmit} id="search">
+                    <div >
+                        <form className="searchInput" onSubmit={onSubmit} >
+                            <div className="info-container">
+
                             <input
                                 type="text"
-                                placeholder="Type Something"
-                                id="searchText"
+                                placeholder="Search a game..."
+                                id="search-text"
                                 name="title"
                                 onChange={changeHandler}
                                 value={values.title}
-                            />
-                            <label htmlFor="gameFilter">Filter by Genre:</label>
+                                />
+                            <label id="genreLabel" htmlFor="gameFilter">Genre:</label>
                             <select onChange={changeHandler} name="genre" value={values.genre} id="gameFilter">
                                 <option value="Show All">Show All</option>
                                 <option value="Adventure">Adventure</option>
                                 <option value="Strategy">Strategy</option>
                                 <option value="Racing">Racing</option>
                             </select>
+                                </div>
                             <button id="searchNow" type="submit"> Search Now</button>
                         </form>
                     </div>

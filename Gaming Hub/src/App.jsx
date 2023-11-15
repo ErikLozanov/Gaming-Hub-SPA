@@ -44,13 +44,31 @@ function App() {
     setGames(state => state.map(game => game._id === editedGame._id ? editedGame : game));
 
     navigate(`/games/details/${data._id}`);
-  }
+  };
+
+  const searchGame = (gameData) => {
+    const filters = {};
+    if (gameData.title) {
+      filters.title = gameData.title.toLowerCase();
+    }
+    if (gameData.genre) {
+      filters.genre = gameData.genre.toLowerCase();
+    }
+  
+    setGames((state) =>
+      state.filter(
+        (game) =>
+          (!filters.title || game.title.toLowerCase().includes(filters.title)) &&
+          (!filters.genre || game.genre.toLowerCase().includes(filters.genre))
+      )
+    );
+  };
   return (
     <AuthProvider>
      <Header />
       <Routes>
         <Route path='/' element={<Home allGames={games} />} />
-        <Route path='/games' element={<Games allGames={games} />} />
+        <Route path='/games' element={<Games allGames={games} searchGame={searchGame} />} />
         <Route path='/games/my-added-games' element={<MyAddedGames />} />
         <Route path='/games/details/:id' element={<Details />} />
         <Route path='/contact-us' element={<ContactUs />} />

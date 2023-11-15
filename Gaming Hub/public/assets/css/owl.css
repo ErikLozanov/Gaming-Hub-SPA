@@ -378,3 +378,23 @@ button:hover{
 	transition: .2s ease-in;
 	cursor: pointer;
 }
+
+.searchInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 70px;
+}
+
+#genreLabel {
+  margin: 0px;
+  font-size: 1.2rem;
+}
+
+.info-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
