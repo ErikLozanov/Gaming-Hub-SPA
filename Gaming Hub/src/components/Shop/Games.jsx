@@ -5,12 +5,11 @@ import { gameServiceFactory } from "../../services/gameService";
 
 export default function Games({ allGames }) {
 
-    const {searchGame} = gameServiceFactory();
-    
+    const {getAll} = gameServiceFactory();
     const { onSubmit, values, changeHandler } = useForm({
         title: "",
         genre: "",
-    },searchGame);
+    },getAll);
     return (
         <>
             <div className="page-heading header-text">

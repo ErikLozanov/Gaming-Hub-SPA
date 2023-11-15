@@ -7,12 +7,12 @@ router.get('/', async (req, res) => {
     const games = await gameManager.getAll(req.query);
 
     res.json(games);
-})
+});
 
-router.post("/", async (req, res) => {
+router.post("/create-game", async (req, res) => {
     try {
-        await gameManager.create(req.body);
-
+        const result = await gameManager.create(req.body);
+        res.json(result);
         res.status(204).end();
     } catch (err) {
         res.status(400).json({
@@ -25,7 +25,6 @@ router.get('/my-added-games/:userId', async (req, res) => {
 
     const userId = req.params.userId;
 
-    console.log(userId);
     const games = await gameManager.getByOwner(userId).lean();
 
     res.json(games);
@@ -66,13 +65,22 @@ router.delete('/:gameId', async (req, res) => {
 
 });
 
-router.post('/:title/:genre', async (req, res) => {
-    const {title, genre} = req.params;
+// router.get('/', async (req, res) => {
+//     const title = req.body;
+//     console.log(title);
 
-    const games = await gameManager.searchGame(title, genre).lean();
-    console.log(games);
+//     try {
+//         const games = await gameManager.searchGame(title).lean();
+//         console.log(games);
+    
+//         res.json(games);
+//     } catch (error) {
+//         res.status(400).json({
+//             message: 'Cannot delete game'
+//         });
+//     }
 
-    res.json(games);
-});
+
+// });
 
 module.exports = router;

@@ -7,7 +7,6 @@ export const gameServiceFactory = (token) => {
 
     const getAll = async () => {
         const result = await get(baseUrl);
-    
         return result;
     };
 
@@ -16,10 +15,13 @@ export const gameServiceFactory = (token) => {
         return result;
     }
 
-    const searchGame = async (data) => {
-        console.log(data);
-        // const result = await get(`${baseUrl}`);
-    }
+    // const searchGame = async (data) => {
+    //     const {title} = data;
+    //     console.log(title);
+    //     const result = await get(`${baseUrl}/${title}`);
+    //     console.log(result);
+    //     return result;
+    // }
     
     const getOne = async (gameId) => {
         const result = await get(`${baseUrl}/${gameId}`);
@@ -28,10 +30,7 @@ export const gameServiceFactory = (token) => {
     };
     
     const create = async (gameData) => {
-        const result = await post(baseUrl, gameData);
-    
-        console.log(result);
-    
+        const result = await post(`${baseUrl}/create-game`, gameData);
         return result;
     };
     
@@ -47,6 +46,5 @@ export const gameServiceFactory = (token) => {
         create,
         edit,
         delete: deleteGame,
-        searchGame
     };
 }

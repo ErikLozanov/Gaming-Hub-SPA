@@ -32,7 +32,6 @@ function App() {
   const onCreateGameSubmit = async (data) => {
     const userId = sessionStorage.getItem('userId');
     const newGame = await gameService.create({...data, _ownerId: userId});
-
     setGames(state => [...state, newGame]);
 
     navigate('/games');
@@ -40,7 +39,6 @@ function App() {
 
   const onEditGameSubmit = async (data) => {
     const userId = sessionStorage.getItem('userId');
-    console.log(data);
     const editedGame = await gameService.edit(data._id, data);
 
     setGames(state => state.map(game => game._id === editedGame._id ? editedGame : game));
