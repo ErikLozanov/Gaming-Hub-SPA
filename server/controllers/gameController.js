@@ -66,10 +66,10 @@ router.delete('/:gameId', async (req, res) => {
 
 });
 
-router.post('/games', async (req, res) => {
-    const {name, genre} = req.params;
+router.post('/:title/:genre', async (req, res) => {
+    const {title, genre} = req.params;
 
-    const games = await gameManager.searchGame(name, genre).lean();
+    const games = await gameManager.searchGame(title, genre).lean();
     console.log(games);
 
     res.json(games);

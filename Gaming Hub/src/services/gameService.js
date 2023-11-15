@@ -15,6 +15,10 @@ export const gameServiceFactory = (token) => {
         const result = await get(`${baseUrl}/my-added-games/${userId}`);
         return result;
     }
+
+    const searchGame = async (title, genre) => {
+        const result = await get(`${baseUrl}`)
+    }
     
     const getOne = async (gameId) => {
         const result = await get(`${baseUrl}/${gameId}`);
