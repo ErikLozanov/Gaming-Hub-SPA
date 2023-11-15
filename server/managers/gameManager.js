@@ -23,3 +23,17 @@ exports.update = (gameId, gameData) => Game.findByIdAndUpdate(gameId, gameData);
 exports.delete = (gameId) => Game.findByIdAndDelete(gameId);
 
 exports.getByOwner = (userId) => Game.find({_ownerId: userId});
+
+exports.searchGame = (name, platform) => {
+    const query = {};
+  
+    if (name) {
+      query.name = name;
+    }
+  
+    if (platform) {
+      query.platform = platform;
+    }
+  
+    return Game.find(query);
+  };
