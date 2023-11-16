@@ -1,20 +1,6 @@
 const Game = require('../models/Game');
 
-exports.getAll = async (data) => {
-    const query = {};
-    const {title, genre} = data;
-    if(data) {
-        if (title) {
-            query.title = title;
-          }
-        
-          if (genre) {
-            query.genre = genre;
-          }
-          const result = await Game.find(query);
-          return result;
-    }
-
+exports.getAll = async () => {
     const result = await Game.find();
     return result;
 }

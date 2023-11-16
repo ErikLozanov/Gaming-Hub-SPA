@@ -20,6 +20,12 @@ export const gameServiceFactory = (token) => {
     
         return result;
     };
+
+    const searchGame = async (params) => {
+        const searchQuery = encodeURIComponent(`title="${params}"`);
+        const result = await get(`${baseUrl}?where=${searchQuery}`);
+        console.log(result);
+    };
     
     const create = async (gameData) => {
         const result = await post(`${baseUrl}/create-game`, gameData);
@@ -38,5 +44,6 @@ export const gameServiceFactory = (token) => {
         create,
         edit,
         delete: deleteGame,
+        searchGame
     };
 }

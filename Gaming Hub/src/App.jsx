@@ -46,22 +46,9 @@ function App() {
     navigate(`/games/details/${data._id}`);
   };
 
-  const searchGame = (gameData) => {
-    const filters = {};
-    if (gameData.title) {
-      filters.title = gameData.title.toLowerCase();
-    }
-    if (gameData.genre) {
-      filters.genre = gameData.genre.toLowerCase();
-    }
-  
-    setGames((state) =>
-      state.filter(
-        (game) =>
-          (!filters.title || game.title.toLowerCase().includes(filters.title)) &&
-          (!filters.genre || game.genre.toLowerCase().includes(filters.genre))
-      )
-    );
+  const searchGame = async (gameData) => {
+    let result = await gameService.searchGame(gameData.title);
+    console.log(result);
   };
   return (
     <AuthProvider>

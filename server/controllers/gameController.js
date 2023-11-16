@@ -3,9 +3,7 @@ const router = require("express").Router();
 const gameManager = require("../managers/gameManager");
 
 router.get('/', async (req, res) => {
-
-    const games = await gameManager.getAll(req.query);
-
+   const games = await gameManager.getAll(req.query);
     res.json(games);
 });
 
@@ -67,7 +65,7 @@ router.delete('/:gameId', async (req, res) => {
 });
 
 // router.get('/', async (req, res) => {
-//     const title = req.body;
+//     const title = req.query;
 //     console.log(title);
 
 //     try {

@@ -6,7 +6,6 @@ export default function Games({ allGames, searchGame }) {
 
     const { onSubmit, values, changeHandler } = useForm({
         title: "",
-        genre: "",
     },searchGame);
 
     return (
@@ -37,13 +36,13 @@ export default function Games({ allGames, searchGame }) {
                                 onChange={changeHandler}
                                 value={values.title}
                                 />
-                            <label id="genreLabel" htmlFor="gameFilter">Genre:</label>
+                            {/* <label id="genreLabel" htmlFor="gameFilter">Genre:</label>
                             <select onChange={changeHandler} name="genre" value={values.genre} id="gameFilter">
                                 <option value="Show All">Show All</option>
                                 <option value="Adventure">Adventure</option>
                                 <option value="Strategy">Strategy</option>
                                 <option value="Racing">Racing</option>
-                            </select>
+                            </select> */}
                                 </div>
                             <button id="searchNow" type="submit"> Search Now</button>
                         </form>
