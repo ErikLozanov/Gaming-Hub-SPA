@@ -3,7 +3,7 @@ const router = require("express").Router();
 const gameManager = require("../managers/gameManager");
 
 router.get('/', async (req, res) => {
-   const games = await gameManager.getAll(req.query);
+   const games = await gameManager.getAll();
     res.json(games);
 });
 
@@ -64,22 +64,22 @@ router.delete('/:gameId', async (req, res) => {
 
 });
 
-// router.get('/', async (req, res) => {
-//     const title = req.query;
-//     console.log(title);
+router.get('/search', async (req, res) => {
 
-//     try {
-//         const games = await gameManager.searchGame(title).lean();
-//         console.log(games);
+    try {
+        const searchTerm = req.query.q; // Assuming the search term is passed as a query parameter named 'q'
+        
+        // Use $regex to perform a case-insensitive search
+        const query = { searchField: { $regex: new RegExp(searchTerm, 'i') } };
     
-//         res.json(games);
-//     } catch (error) {
-//         res.status(400).json({
-//             message: 'Cannot delete game'
-//         });
-//     }
+        const result = await gameManager.searchGame(query);
+    
+        res.json(result);
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+      }
 
-
-// });
+});
 
 module.exports = router;

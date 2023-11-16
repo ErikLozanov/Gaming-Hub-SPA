@@ -18,6 +18,8 @@ exports.delete = (gameId) => Game.findByIdAndDelete(gameId);
 
 exports.getByOwner = (userId) => Game.find({_ownerId: userId});
 
-// exports.searchGame = (name, platform) => {
+exports.searchGame = async (query) => {
+  const result = await Game.find(query).exec();
 
-//   };
+  return result;
+  };

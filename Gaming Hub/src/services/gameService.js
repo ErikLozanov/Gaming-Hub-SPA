@@ -22,9 +22,14 @@ export const gameServiceFactory = (token) => {
     };
 
     const searchGame = async (params) => {
-        const searchQuery = encodeURIComponent(`title="${params}"`);
-        const result = await get(`${baseUrl}?where=${searchQuery}`);
-        console.log(result);
+        console.log(params);
+        try {
+            const result = await get(`${baseUrl}/search?q=${encodeURIComponent(params)}`);
+            const data = await result.json();
+            return data;
+        } catch (error) {
+            console.log(error.message);
+        }
     };
     
     const create = async (gameData) => {
