@@ -18,9 +18,7 @@ export default function MainBanner() {
       </div>
       <div className="col-lg-4 offset-lg-2">
         <div className="right-image">
-          <img src="assets/images/banner-image.jpg" alt="" />
-          <span className="price">$22</span>
-          <span className="offer">-40%</span>
+          <img src="https://assets-prd.ignimgs.com/2022/01/28/starcraft-2-wings-of-liberty-button-crop-1643355282078.jpg" alt="" />
         </div>
       </div>
     </div>
