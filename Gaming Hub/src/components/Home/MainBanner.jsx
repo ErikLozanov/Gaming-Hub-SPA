@@ -9,11 +9,7 @@ export default function MainBanner() {
         <div className="caption header-text">
           <h6>Welcome to lugx</h6>
           <h2>BEST GAMING SITE EVER!</h2>
-          <p>
-            LUGX Gaming is free Bootstrap 5 HTML CSS website template for your
-            gaming websites. You can download and use this layout for commercial
-            purposes. Please tell your friends about TemplateMo.
-          </p>
+          <p>Welcome to our gaming haven! Immerse yourself in the pulse-pounding world of gaming with our dynamic homepage. Bold graphics and vibrant colors welcome you, setting the stage for an epic adventure. Scroll down to discover the latest game releases, trending titles, and exclusive content.</p>
         </div>
       </div>
       <div className="col-lg-4 offset-lg-2">
