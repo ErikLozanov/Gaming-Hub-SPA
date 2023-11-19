@@ -7,20 +7,28 @@ import Modal from 'react-bootstrap/Modal';
 import { gameServiceFactory } from "../../services/gameService";
 import { useAuthContext } from "../../contexts/AuthContext";
 
-export default function Details({onDeleteGame}) {
+export default function Details({onDeleteGame, buyGame}) {
   const { id } = useParams();
   const [gameInfo, setGameInfo] = useState({});
+  const [isBought, setIsBought] = useState(false);
   const { isAuthenticated, userId } = useAuthContext();
   const { getOne } = gameServiceFactory();
 
   const [show, setShow] = useState(false);
 
-
   useEffect(() => {
     getOne(id)
-      .then((res) => setGameInfo(res))
+      .then((res) => {
+        setGameInfo(res)
+        const isBought = res.boughtBy.some(gameId => gameId === userId);
+        setIsBought(isBought);
+      })
       .catch((err) => console.log(err.message));
   }, []);
+
+  const bought = () => {
+    setIsBought(true);
+  }
 
   const isOwner = gameInfo._ownerId === userId;
 
@@ -67,7 +75,7 @@ export default function Details({onDeleteGame}) {
               <p>{gameInfo.description}</p>
               {isAuthenticated && (
                 <>
-                  {isOwner ? (
+                  {isOwner ? 
                     <div className="owner-btns">
                       <Link
                         to={`/games/edit-game/${gameInfo._id}`}
@@ -82,13 +90,15 @@ export default function Details({onDeleteGame}) {
                         Delete
                       </Button>
                     </div>
-                  ) : (
-                    <form id="qty" action="#">
-                      <button type="submit">
-                        <i className="fa fa-shopping-bag" /> BUY NOW
-                      </button>
-                    </form>
-                  )}
+                   : 
+                   isBought ? <p className="button">Game bought!</p> :
+                   <button onClick={() => buyGame(gameInfo._id, userId, bought)}>
+                     <i className="fa fa-shopping-bag" /> BUY NOW
+                   </button>
+
+                    
+                  }
+                  
                 </>
               )}
               <ul>

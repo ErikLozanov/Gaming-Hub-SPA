@@ -37,9 +37,9 @@ export const gameServiceFactory = (token) => {
         return result;
     };
     
-    const edit = (gameId, data) => put(`${baseUrl}/${gameId}`, data);
+    const edit = async (gameId, data) => await put(`${baseUrl}/${gameId}`, data);
 
-    const deleteGame = (gameId) => del(`${baseUrl}/${gameId}`);
+    const deleteGame = async (gameId) => await del(`${baseUrl}/${gameId}`);
 
 
     return {
