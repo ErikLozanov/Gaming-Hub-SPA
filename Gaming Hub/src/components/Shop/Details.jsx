@@ -85,7 +85,7 @@ export default function Details({onDeleteGame}) {
                   ) : (
                     <form id="qty" action="#">
                       <button type="submit">
-                        <i className="fa fa-shopping-bag" /> ADD TO CART
+                        <i className="fa fa-shopping-bag" /> BUY NOW
                       </button>
                     </form>
                   )}
