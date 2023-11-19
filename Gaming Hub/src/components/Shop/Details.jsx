@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import { gameServiceFactory } from "../../services/gameService";
 import { useAuthContext } from "../../contexts/AuthContext";
 
-export default function Details() {
+export default function Details({onDeleteGame}) {
   const { id } = useParams();
   const [gameInfo, setGameInfo] = useState({});
   const { isAuthenticated, userId } = useAuthContext();
@@ -46,7 +46,7 @@ export default function Details() {
         </Modal.Header>
         <Modal.Body>Are you sure you want to delete this game?</Modal.Body>
         <Modal.Footer style={{display:'flex', flexDirection:'row',flexWrap:'nowrap'}}>
-          <Button variant="primary" >
+          <Button variant="primary" onClick={() => onDeleteGame(gameInfo._id)}>
             Yes
           </Button>
           <Button variant="secondary" onClick={() => setShow(false)}>

@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 
 
 
@@ -48,6 +48,18 @@ function App() {
     navigate(`/games/details/${data._id}`);
   };
 
+  const onDeleteGame = async (gameId) => {
+    
+    try {
+      const deletedGame = await gameService.delete(gameId);
+      setGames(state => state.filter(game => game._id !== deletedGame._id));
+      navigate(`/games`);
+    } catch (error) {
+      console.log(error.message);
+    }
+
+  }
+
   const searchGame = async (gameData) => {
     let result = await gameService.searchGame(gameData.title);
     console.log(result);
@@ -60,7 +72,7 @@ function App() {
         <Route path='/' element={<Home allGames={games} />} />
         <Route path='/games' element={<Games allGames={games} searchGame={searchGame} />} />
         <Route path='/games/my-added-games' element={<MyAddedGames />} />
-        <Route path='/games/details/:id' element={<Details />} />
+        <Route path='/games/details/:id' element={<Details onDeleteGame={onDeleteGame}/>} />
         <Route path='/contact-us' element={<ContactUs />} />
         <Route path='/games/create-game' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />} />
         <Route path='/games/edit-game/:gameId' element={<EditGame onEditGameSubmit={onEditGameSubmit} />} />
