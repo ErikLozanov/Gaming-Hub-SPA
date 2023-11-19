@@ -1,6 +1,5 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import Footer from './components/Footer';
@@ -19,7 +18,6 @@ import { useEffect, useState } from 'react';
 import Details from './components/Shop/Details';
 import EditGame from './components/EditGame/EditGame';
 import MyAddedGames from './components/MyAddedGames/MyAddedGames';
-import DeleteGameModal from './components/partials/DeleteGameModal';
 
 function App() {
   const navigate = useNavigate();
@@ -54,6 +52,7 @@ function App() {
     let result = await gameService.searchGame(gameData.title);
     console.log(result);
   };
+
   return (
     <AuthProvider>
      <Header />
@@ -68,7 +67,7 @@ function App() {
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/register' element={<Register />} />
         <Route path='/users/logout' element={<Logout />} />
-        <Route path='/games/delete-game/:gameId' element={<DeleteGameModal />} />
+        {/* <Route path='/games/delete-game/:gameId' element={<DeleteGameModal hideModal={hideModal}/>} /> */}
       </Routes>
      <Footer />
     </AuthProvider>
