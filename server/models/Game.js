@@ -29,7 +29,8 @@ const gameSchema = new mongoose.Schema({
     _ownerId: {
         type: mongoose.Types.ObjectId,
         ref: 'User',
-    }
+    },
+    boughtBy: []
 });
 
 const Game = mongoose.model('Game', gameSchema);
