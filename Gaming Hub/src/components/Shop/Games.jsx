@@ -24,7 +24,7 @@ export default function Games({ allGames, searchGame }) {
             </div>
             <div className="section trending">
                 <div className="container">
-                    <div >
+                    {/* <div >
                         <form className="searchInput" onSubmit={onSubmit} >
                             <div className="info-container">
 
@@ -39,7 +39,7 @@ export default function Games({ allGames, searchGame }) {
                                 </div>
                             <button id="searchNow" type="submit"> Search Now</button>
                         </form>
-                    </div>
+                    </div> */}
                     <div className="row trending-box">
                         {allGames.map((game) => (
                             <Game key={game._id} game={game} />
