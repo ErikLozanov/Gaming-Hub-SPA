@@ -71,7 +71,6 @@ function App() {
       game.boughtBy.push(buyerId);
       console.log(game);
       await gameService.edit(gameId, game);
-      setGames(state => state.map(gameX => gameX._id === game._id ? game : gameX));
       bought();
     } catch (error) {
       console.log(error.message);
@@ -92,7 +91,6 @@ function App() {
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/register' element={<Register />} />
         <Route path='/users/logout' element={<Logout />} />
-        {/* <Route path='/games/delete-game/:gameId' element={<DeleteGameModal hideModal={hideModal}/>} /> */}
       </Routes>
      <Footer />
     </AuthProvider>

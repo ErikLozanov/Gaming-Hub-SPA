@@ -92,9 +92,9 @@ export default function Details({onDeleteGame, buyGame}) {
                     </div>
                    : 
                    isBought ? <p className="button">Game bought!</p> :
-                   <button onClick={() => buyGame(gameInfo._id, userId, bought)}>
+                   <Button  variant="success" onClick={() => buyGame(gameInfo._id, userId, bought)}>
                      <i className="fa fa-shopping-bag" /> BUY NOW
-                   </button>
+                   </Button>
 
                     
                   }
