@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import Game from "../partials/Game";
-import useForm from "../../hooks/useForm";
+// import useForm from "../../hooks/useForm";
+import { useState } from "react";
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function Games({ allGames, searchGame }) {
 
-    const { onSubmit, values, changeHandler } = useForm({
-        title: "",
-    },searchGame);
+    // const { onSubmit, values, changeHandler } = useForm({
+    //     title: "",
+    // },searchGame);
 
     return (
         <>
@@ -23,6 +25,7 @@ export default function Games({ allGames, searchGame }) {
                 </div>
             </div>
             <div className="section trending">
+                
                 <div className="container">
                     {/* <div >
                         <form className="searchInput" onSubmit={onSubmit} >
@@ -41,7 +44,8 @@ export default function Games({ allGames, searchGame }) {
                         </form>
                     </div> */}
                     <div className="row trending-box">
-                        {allGames.map((game) => (
+                        
+                        {allGames.length === 0 ? <h1>Currently there are no added games!</h1> : allGames.map((game) => (
                             <Game key={game._id} game={game} />
                         ))}
                     </div>
