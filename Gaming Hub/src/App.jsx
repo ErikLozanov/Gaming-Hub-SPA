@@ -91,6 +91,7 @@ function App() {
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/register' element={<Register />} />
         <Route path='/users/logout' element={<Logout />} />
+        <Route path='*' element={<Logout />} />
       </Routes>
      <Footer />
     </AuthProvider>
