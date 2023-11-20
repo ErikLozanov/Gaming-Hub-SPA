@@ -32,7 +32,7 @@ export default function CreateGame({ onCreateGameSubmit }) {
             <section id="create-game">
                 <form id="#" onSubmit={onSubmit}>
                     <div className="container">
-                        <label htmlFor="leg-title">Legendary title:</label>
+                        <label htmlFor="leg-title">Title:</label>
                         <input
                             value={values.title}
                             onChange={changeHandler}
