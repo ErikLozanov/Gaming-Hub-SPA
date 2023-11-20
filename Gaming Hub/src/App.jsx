@@ -18,6 +18,7 @@ import { useEffect, useState } from 'react';
 import Details from './components/Shop/Details';
 import EditGame from './components/EditGame/EditGame';
 import MyAddedGames from './components/MyAddedGames/MyAddedGames';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 
 function App() {
   const navigate = useNavigate();
@@ -91,7 +92,7 @@ function App() {
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/register' element={<Register />} />
         <Route path='/users/logout' element={<Logout />} />
-        <Route path='*' element={<Logout />} />
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
      <Footer />
     </AuthProvider>
