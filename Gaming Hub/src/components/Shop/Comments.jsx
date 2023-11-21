@@ -5,21 +5,23 @@ import { commentServiceFactory } from "../../services/commentService";
 
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 
-export default function Comments({gameId}) {
-
+export default function Comments() {
+    
+    const { id } = useParams();
     const [comments,setComments] = useState([]);
     const commentService = commentServiceFactory();
 
     const {onSubmit,values,changeHandler} = useForm({text:''}, onCommentSubmit);
 
 
-    // useEffect(() => {
-    //     const comments = commentService.getAllForGame(gameId)
-    //     .then(res => setComments(res))
-    //     .catch((err) => console.log(err.message));
-    // },[])
+    useEffect(() => {
+        const comments = commentService.getAllForGame(id)
+        .then(res => setComments(res))
+        .catch((err) => console.log(err.message));
+    },[])
 
     console.log(comments);
 
@@ -33,7 +35,7 @@ export default function Comments({gameId}) {
         <>
   <div className="container">
   <div className={styles["be-comment-block"]}>
-  <h1 className={styles["comments-title"]}>Comments (3)</h1>
+  <h1 className={styles["comments-title"]}>Comments ({comments.length})</h1>
 
   <div className={styles["be-comment"]}>
     <div className={styles["be-img-comment"]}>

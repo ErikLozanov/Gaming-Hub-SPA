@@ -126,7 +126,7 @@ export default function Details({onDeleteGame, buyGame}) {
         </div>
       </div>
       <div className="more-info">
-        <Comments gameId={gameInfo._id} />
+        <Comments />
       </div>
     </>
   );
