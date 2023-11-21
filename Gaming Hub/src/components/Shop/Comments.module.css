@@ -111,11 +111,17 @@ body{
 }
 
 .form-group textarea.form-input {
+    resize: none;
     height: 150px;
 }
 
 
 #form-comment {
     margin-top: 50px;
+}
+
+#form-comment button {
+    margin-left: 500px;
+    width: 200px;
 }
 

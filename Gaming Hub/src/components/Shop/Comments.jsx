@@ -97,7 +97,7 @@ export default function Comments() {
           />
         </div>
       </div>
-      <Button type="submit" variant="primary">Secondary</Button>{' '}
+      <Button type="submit" variant="primary">Submit</Button>{' '}
     </div>
   </form>
 </div>
