@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import { gameServiceFactory } from "../../services/gameService";
-import { commentServiceFactory } from "../../services/commentService";
 
 import { useAuthContext } from "../../contexts/AuthContext";
 import Comments from "./Comments";
@@ -16,11 +15,9 @@ export default function Details({onDeleteGame, buyGame}) {
   const [isBought, setIsBought] = useState(false);
   const [show, setShow] = useState(false);
   const [boughtTimes, setBoughtTimes] = useState(0);
-  const [comments,setComments] = useState([]);
 
   const { isAuthenticated, userId } = useAuthContext();
   const gameService = gameServiceFactory();
-  const commentService = commentServiceFactory();
 
 
   useEffect(() => {
@@ -32,12 +29,6 @@ export default function Details({onDeleteGame, buyGame}) {
         setBoughtTimes(res.boughtBy.length);
       })
       .catch((err) => console.log(err.message));
-
-    commentService.getAllForGame(id)
-    .then((res) => {
-      setComments(res)
-    }).catch((err) => console.log(err.message));
-
   }, []);
 
   const bought = () => {
@@ -135,7 +126,7 @@ export default function Details({onDeleteGame, buyGame}) {
         </div>
       </div>
       <div className="more-info">
-        <Comments />
+        <Comments gameId={gameInfo._id} />
       </div>
     </>
   );

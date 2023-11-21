@@ -10,6 +10,11 @@ export const commentServiceFactory = (token) => {
         return result;
     };
 
+    const create = async (text, gameId, _ownerId) => {
+        const result = await post(`${baseUrl}/${gameId}`, {text, _ownerId, gameId});
+        return result;
+    };
+
     // const getAllById = async (userId) => {
     //     const result = await get(`${baseUrl}/my-added-games/${userId}`);
     //     return result;
@@ -32,10 +37,7 @@ export const commentServiceFactory = (token) => {
     //     }
     // };
     
-    // const create = async (gameData) => {
-    //     const result = await post(`${baseUrl}/create-game`, gameData);
-    //     return result;
-    // };
+
     
     // const edit = async (gameId, data) => await put(`${baseUrl}/${gameId}`, data);
 
@@ -44,5 +46,6 @@ export const commentServiceFactory = (token) => {
 
     return {
         getAllForGame,
+        create
     };
 }
