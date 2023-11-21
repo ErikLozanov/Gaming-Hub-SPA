@@ -6,6 +6,7 @@ import { commentServiceFactory } from "../../services/commentService";
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Comment from "../partials/Comment";
 
 
 export default function Comments() {
@@ -23,12 +24,12 @@ export default function Comments() {
         .catch((err) => console.log(err.message));
     },[])
 
-    console.log(comments);
 
     async function onCommentSubmit(values) {
         const userId = sessionStorage.getItem('userId');
-        const newComment = await commentService.create(values.text, gameId, userId);
+        const newComment = await commentService.create(values.text, id, userId);
         console.log(newComment);
+        setComments(state => [...state, newComment]);
         };
 
     return (
@@ -37,57 +38,7 @@ export default function Comments() {
   <div className={styles["be-comment-block"]}>
   <h1 className={styles["comments-title"]}>Comments ({comments.length})</h1>
 
-  <div className={styles["be-comment"]}>
-    <div className={styles["be-img-comment"]}>
-      <a href="blog-detail-2.html">
-        <img
-          src="https://bootdey.com/img/Content/avatar/avatar2.png"
-          alt=""
-          className={styles["be-ava-comment"]}
-        />
-      </a>
-    </div>
-    <div className={styles["be-comment-content"]}>
-      <span className={styles["be-comment-name"]}>
-        <a href="blog-detail-2.html">Phoenix, the Creative Studio</a>
-      </span>
-      <span className={styles["be-comment-time"]}>
-        <i className={styles["fa fa-clock-o"]} />
-        May 27, 2015 at 3:14am
-      </span>
-      <p className={styles["be-comment-text"]}>
-        Nunc ornare sed dolor sed mattis. In scelerisque dui a arcu mattis,
-        at maximus eros commodo. Cras magna nunc, cursus lobortis luctus at,
-        sollicitudin vel neque. Duis eleifend lorem non ant. Proin ut ornare
-        lectus, vel eleifend est. Fusce hendrerit dui in turpis tristique
-        blandit.
-      </p>
-    </div>
-  </div>
-  <div className={styles["be-comment"]}>
-    <div className={styles["be-img-comment"]}>
-      <a href="blog-detail-2.html">
-        <img
-          src="https://bootdey.com/img/Content/avatar/avatar3.png"
-          alt=""
-          className={styles["be-ava-comment"]}
-        />
-      </a>
-    </div>
-    <div className={styles["be-comment-content"]}>
-      <span className={styles["be-comment-name"]}>
-        <a href="blog-detail-2.html">Cüneyt ŞEN</a>
-      </span>
-      <span className={styles["be-comment-time"]}>
-        <i className={styles["fa fa-clock-o"]} />
-        May 27, 2015 at 3:14am
-      </span>
-      <p className={styles["be-comment-text"]}>
-        Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque.
-        Duis eleifend lorem non ant
-      </p>
-    </div>
-  </div>
+    {comments.map(comment => <Comment key={comment._id} comment={comment} />)}
   <form onSubmit={onSubmit} id={styles["form-comment"]} className={styles["form-block"]}>
     <div className={styles["row"]}>
       <div className={styles["col-xs-12"]}>

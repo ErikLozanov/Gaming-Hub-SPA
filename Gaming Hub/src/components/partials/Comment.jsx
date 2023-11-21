@@ -1,5 +1,7 @@
-export default function Comment({comment}) {
+import styles from "../Shop/Comments.module.css";
 
+
+export default function Comment({comment}) {
     return (
         <div className={styles["be-comment"]}>
         <div className={styles["be-img-comment"]}>
@@ -13,7 +15,7 @@ export default function Comment({comment}) {
         </div>
         <div className={styles["be-comment-content"]}>
           <span className={styles["be-comment-name"]}>
-            <a href="blog-detail-2.html">{comment.email}</a>
+            <a href="blog-detail-2.html">{comment._ownerId.email}</a>
           </span>
           <span className={styles["be-comment-time"]}>
             <i className={styles["fa fa-clock-o"]} />
