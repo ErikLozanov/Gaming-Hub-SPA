@@ -5,20 +5,25 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import { gameServiceFactory } from "../../services/gameService";
+import { commentServiceFactory } from "../../services/commentService";
+
 import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function Details({onDeleteGame, buyGame}) {
   const { id } = useParams();
   const [gameInfo, setGameInfo] = useState({});
   const [isBought, setIsBought] = useState(false);
-  const [boughtTimes, setBoughtTimes] = useState(0);
-  const { isAuthenticated, userId } = useAuthContext();
-  const { getOne } = gameServiceFactory();
-
   const [show, setShow] = useState(false);
+  const [boughtTimes, setBoughtTimes] = useState(0);
+  const [comments,setComments] = useState([]);
+
+  const { isAuthenticated, userId } = useAuthContext();
+  const gameService = gameServiceFactory();
+  const commentService = commentServiceFactory();
+
 
   useEffect(() => {
-    getOne(id)
+    gameService.getOne(id)
       .then((res) => {
         setGameInfo(res)
         const isBought = res.boughtBy.some(gameId => gameId === userId);
@@ -26,6 +31,12 @@ export default function Details({onDeleteGame, buyGame}) {
         setBoughtTimes(res.boughtBy.length);
       })
       .catch((err) => console.log(err.message));
+
+    commentService.getAllForGame(id)
+    .then((res) => {
+      setComments(res)
+    }).catch((err) => console.log(err.message));
+    
   }, []);
 
   const bought = () => {

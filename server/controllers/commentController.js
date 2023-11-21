@@ -7,3 +7,6 @@ router.get('/:gameId',async (req, res) => {
 
     res.json(game);
 });
+
+module.exports = router;
+
