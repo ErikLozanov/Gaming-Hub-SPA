@@ -11,6 +11,7 @@ export default function Details({onDeleteGame, buyGame}) {
   const { id } = useParams();
   const [gameInfo, setGameInfo] = useState({});
   const [isBought, setIsBought] = useState(false);
+  const [boughtTimes, setBoughtTimes] = useState(0);
   const { isAuthenticated, userId } = useAuthContext();
   const { getOne } = gameServiceFactory();
 
@@ -22,12 +23,14 @@ export default function Details({onDeleteGame, buyGame}) {
         setGameInfo(res)
         const isBought = res.boughtBy.some(gameId => gameId === userId);
         setIsBought(isBought);
+        setBoughtTimes(res.boughtBy.length);
       })
       .catch((err) => console.log(err.message));
   }, []);
 
   const bought = () => {
     setIsBought(true);
+    setBoughtTimes(state => state + 1);
   }
 
   const isOwner = gameInfo._ownerId === userId;
@@ -106,7 +109,10 @@ export default function Details({onDeleteGame, buyGame}) {
                   <span>Released Year:</span> {gameInfo.year}
                 </li>
                 <li>
-                  <span>Genre:</span> <a href="#">{gameInfo.category}</a>{" "}
+                  <span>Genre:</span> {gameInfo.category}
+                </li>
+                <li>
+                  <span>Bought by:</span> {boughtTimes} {boughtTimes == 1 ? 'player' : 'players' }
                 </li>
               </ul>
             </div>
