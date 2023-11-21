@@ -3,7 +3,7 @@ import TrendingGame from "../partials/TrendingGame";
 
 export default function Trending({allGames}) {
 
-  allGames = allGames.slice(0,4);
+  allGames = allGames.sort((a,b) => b.boughtBy.length - a.boughtBy.length).slice(0,4);
 
     return (
         <>
