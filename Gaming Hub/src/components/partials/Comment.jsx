@@ -19,7 +19,7 @@ export default function Comment({comment}) {
           </span>
           <span className={styles["be-comment-time"]}>
             <i className={styles["fa fa-clock-o"]} />
-            May 27, 2015 at 3:14am
+            {comment.commentDate}
           </span>
           <p className={styles["be-comment-text"]}>{comment.text}</p>
         </div>
