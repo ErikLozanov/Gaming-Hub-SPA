@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Comment from "../partials/Comment";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 
 export default function Comments() {
@@ -14,6 +15,7 @@ export default function Comments() {
     const { id } = useParams();
     const [comments,setComments] = useState([]);
     const commentService = commentServiceFactory();
+    const { isAuthenticated } = useAuthContext();
 
     const {onSubmit,values,changeHandler} = useForm({text:''}, onCommentSubmit);
 
@@ -39,7 +41,7 @@ export default function Comments() {
   <h1 className={styles["comments-title"]}>Comments ({comments.length})</h1>
 
     {comments.map(comment => <Comment key={comment._id} comment={comment} />)}
-  <form onSubmit={onSubmit} id={styles["form-comment"]} className={styles["form-block"]}>
+    {isAuthenticated ? <form onSubmit={onSubmit} id={styles["form-comment"]} className={styles["form-block"]}>
     <div className={styles["row"]}>
       <div className={styles["col-xs-12"]}>
         <div className={styles["form-group"]}>
@@ -55,7 +57,8 @@ export default function Comments() {
       </div>
       <Button type="submit" variant="primary">Submit</Button>{' '}
     </div>
-  </form>
+  </form>  : <p style={{marginTop: "50px"}}>You need to log in to add a comment. </p>}
+
 </div>
 
   </div>
