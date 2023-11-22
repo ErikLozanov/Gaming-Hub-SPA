@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Comment from "../partials/Comment";
 import { useAuthContext } from "../../contexts/AuthContext";
+import formatDate from "../../utils/dateFormatter";
+
 
 
 export default function Comments() {
@@ -29,7 +31,9 @@ export default function Comments() {
 
     async function onCommentSubmit(values) {
         const userId = sessionStorage.getItem('userId');
-        const newComment = await commentService.create(values.text, id, userId);
+        const commentDate = formatDate(new Date());
+        console.log(commentDate);
+        const newComment = await commentService.create(values.text, id, userId, commentDate);
         console.log(newComment);
         setComments(state => [...state, newComment]);
         };

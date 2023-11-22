@@ -10,8 +10,8 @@ export const commentServiceFactory = (token) => {
         return result;
     };
 
-    const create = async (text, gameId, _ownerId) => {
-        const result = await post(`${baseUrl}/${gameId}`, {text, _ownerId, gameId});
+    const create = async (text, gameId, _ownerId, commentDate) => {
+        const result = await post(`${baseUrl}/${gameId}`, {text, _ownerId, gameId, commentDate});
         return result;
     };
 
