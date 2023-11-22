@@ -14,6 +14,9 @@ const commentSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User',
     },
+    commentDate: {
+        type: String,
+    }
 
 });
 
