@@ -2,6 +2,7 @@ import styles from "../Shop/Comments.module.css";
 
 
 export default function Comment({comment}) {
+
     return (
         <div className={styles["be-comment"]}>
         <div className={styles["be-img-comment"]}>

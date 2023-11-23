@@ -18,7 +18,6 @@ export default function Comments() {
     const [comments,setComments] = useState([]);
     const commentService = commentServiceFactory();
     const { isAuthenticated } = useAuthContext();
-
     const {onSubmit,values,changeHandler} = useForm({text:''}, onCommentSubmit);
 
 
@@ -31,11 +30,12 @@ export default function Comments() {
 
     async function onCommentSubmit(values) {
         const userId = sessionStorage.getItem('userId');
+        const email = sessionStorage.getItem('email');
         const commentDate = formatDate(new Date());
         console.log(commentDate);
         const newComment = await commentService.create(values.text, id, userId, commentDate);
-        console.log(newComment);
-        setComments(state => [...state, newComment]);
+        const modifiedComment = {...newComment, _ownerId: {_ownerId: newComment._ownerId , email}};
+        setComments(state => [...state, modifiedComment]);
         };
 
     return (
