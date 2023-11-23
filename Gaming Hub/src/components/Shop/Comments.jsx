@@ -43,7 +43,7 @@ export default function Comments() {
   <div className="container">
   <div className={styles["be-comment-block"]}>
   <h1 className={styles["comments-title"]}>Comments ({comments.length})</h1>
-
+    {(comments.length == 0 && isAuthenticated) && (<p>There are no comments on this game. Be the first one to leave a comment!</p>)}
     {comments.map(comment => <Comment key={comment._id} comment={comment} />)}
     {isAuthenticated ? <form onSubmit={onSubmit} id={styles["form-comment"]} className={styles["form-block"]}>
     <div className={styles["row"]}>

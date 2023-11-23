@@ -13,7 +13,7 @@ export default function Trending({allGames}) {
       <div className="col-lg-6">
         <div className="section-heading">
           <h6>Trending</h6>
-          <h2>Trending Games</h2>
+          <h2>Best Sellers</h2>
         </div>
       </div>
       <div className="col-lg-6">
