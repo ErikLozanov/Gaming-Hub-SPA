@@ -315,6 +315,12 @@ button:hover{
   margin-top: 80px;
 }
 
+.login-redirect {
+  margin: auto;
+  width: 400px;
+  margin-top: 40px;
+}
+
 
 #create-game {
   display: flex;

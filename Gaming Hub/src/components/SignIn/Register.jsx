@@ -67,6 +67,7 @@ export default function Register() {
     />
     <button>Sign up</button>
 </form>
+    <p className="login-redirect">Already have an account? <Link to='/users/login'>Click Here</Link> to log in.</p>
 </div> 
             </div>
         </div>
