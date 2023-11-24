@@ -125,3 +125,7 @@ body{
     width: 200px;
 }
 
+#comment-dropdown {
+    visibility: none;
+}
+
