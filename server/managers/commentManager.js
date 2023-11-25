@@ -12,3 +12,8 @@ exports.create = async (data) => {
 
 exports.update = (commentId, commentData) => Comment.findByIdAndUpdate(commentId, { $set: { text: commentData } },
     { new: true });
+
+
+exports.delete = (commentId) => {
+    return Comment.findByIdAndDelete(commentId);
+};
