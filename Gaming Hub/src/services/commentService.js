@@ -20,38 +20,13 @@ export const commentServiceFactory = (token) => {
         return result;
     }
 
-    // const getAllById = async (userId) => {
-    //     const result = await get(`${baseUrl}/my-added-games/${userId}`);
-    //     return result;
-    // }
-    
-    // const getOne = async (gameId) => {
-    //     const result = await get(`${baseUrl}/${gameId}`);
-    
-    //     return result;
-    // };
-
-    // const searchGame = async (params) => {
-    //     console.log(params);
-    //     try {
-    //         const result = await get(`${baseUrl}/search?q=${encodeURIComponent(params)}`);
-    //         const data = await result.json();
-    //         return data;
-    //     } catch (error) {
-    //         console.log(error.message);
-    //     }
-    // };
-    
-
-    
-    // const edit = async (gameId, data) => await put(`${baseUrl}/${gameId}`, data);
-
-    // const deleteGame = async (gameId) => await del(`${baseUrl}/${gameId}`);
+    const delComment = async (gameId, commentId) => await del(`${baseUrl}/${gameId}/${commentId}`);
 
 
     return {
         getAllForGame,
         create,
         edit,
+        delComment
     };
 }
