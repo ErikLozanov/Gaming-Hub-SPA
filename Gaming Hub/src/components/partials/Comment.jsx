@@ -3,7 +3,7 @@ import styles from "../Shop/Comments.module.css";
 
 import Dropdown from 'react-bootstrap/Dropdown';
 
-export default function Comment({comment, onEditComment}) {
+export default function Comment({comment, onEditComment, onDeleteComment}) {
 
   const { userId } = useAuthContext();
 
@@ -32,8 +32,8 @@ export default function Comment({comment, onEditComment}) {
       <Dropdown.Menu>
         {isOwner ? (
           <>
-        <Dropdown.Item onClick={(e) => onEditComment(e,comment)} href="#edit-comment">Edit</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Delete</Dropdown.Item> 
+        <Dropdown.Item onClick={(e) => onEditComment(e, comment)} >Edit</Dropdown.Item>
+        <Dropdown.Item onClick={(e) => onDeleteComment(e, comment)}>Delete</Dropdown.Item> 
           </>) : (
         <Dropdown.Item href="#/action-2">Report</Dropdown.Item>
         )}
