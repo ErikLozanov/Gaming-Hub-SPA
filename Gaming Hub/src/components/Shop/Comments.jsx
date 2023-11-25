@@ -40,7 +40,7 @@ export default function Comments() {
 
   function onEditComment(e, comment) {
       setOnEdit(true);
-      changeValues(comment.text);
+      changeValues(comment);
       setCommentId(comment._id)
     };
 
