@@ -24,5 +24,12 @@ router.put('/:gameId/:commentId',async (req, res) => {
     res.json(editComment)
 });
 
+router.delete('/:gameId/:commentId',async (req, res) => {
+    const commentId = req.params.commentId;
+    const deletedComment = await commentManager.delete(commentId);
+
+    res.json(deletedComment)
+});
+
 module.exports = router;
 
