@@ -15,6 +15,11 @@ export const commentServiceFactory = (token) => {
         return result;
     };
 
+    const edit = async (text, gameId, commentId, commentDate) => {
+        const result = await put(`${baseUrl}/${gameId}/${commentId}`, {text, gameId, commentDate});
+        return result;
+    }
+
     // const getAllById = async (userId) => {
     //     const result = await get(`${baseUrl}/my-added-games/${userId}`);
     //     return result;
@@ -46,6 +51,7 @@ export const commentServiceFactory = (token) => {
 
     return {
         getAllForGame,
-        create
+        create,
+        edit,
     };
 }
