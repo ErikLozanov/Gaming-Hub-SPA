@@ -50,6 +50,7 @@ export default function Comments() {
     const editComment = await commentService.edit(values.text, id, commentId, commentDate);
     const modifiedComment = {...editComment, _ownerId: {_id: editComment._ownerId , email}};
     setComments(state => state.map(comment => comment._id === modifiedComment._id ? modifiedComment : comment));
+    setOnEdit(false);
   };
 
     return (
