@@ -29,14 +29,14 @@ export default function Comments() {
     },[])
 
 
-    async function onCommentSubmit(values) {
+  async function onCommentSubmit(values) {
         const userId = sessionStorage.getItem('userId');
         const email = sessionStorage.getItem('email');
         const commentDate = formatDate(new Date());
         const newComment = await commentService.create(values.text, id, userId, commentDate);
         const modifiedComment = {...newComment, _ownerId: {_id: newComment._ownerId , email}};
         setComments(state => [...state, modifiedComment]);
-        };
+    };
 
   function onEditComment(e, comment) {
       setOnEdit(true);
@@ -51,7 +51,12 @@ export default function Comments() {
     const modifiedComment = {...editComment, _ownerId: {_id: editComment._ownerId , email}};
     setComments(state => state.map(comment => comment._id === modifiedComment._id ? modifiedComment : comment));
     setOnEdit(false);
-  };
+    };
+
+  async function onDeleteComment (e, comment) {
+    const deletedComment = await commentService.delComment(id, comment._id);
+    setComments((state) => state.filter(comment => comment._id !== deletedComment._id));
+    };
 
     return (
         <>
@@ -59,7 +64,8 @@ export default function Comments() {
   <div className={styles["be-comment-block"]}>
   <h1 className={styles["comments-title"]}>Comments ({comments.length})</h1>
     {(comments.length == 0 && isAuthenticated) && (<p>There are no comments on this game. Be the first one to leave a comment!</p>)}
-    {comments.map(comment => <Comment key={comment._id} onEditComment={onEditComment} comment={comment} />)}
+    {comments.map(comment => <Comment key={comment._id} onDeleteComment={onDeleteComment} onEditComment={onEditComment} comment={comment} />)}
+    
     {isAuthenticated ? (onEdit ? 
       (<form onSubmit={onSubmit} id={styles["form-comment"]} className={styles["form-block"]}>
     <div className={styles["row"]}>
