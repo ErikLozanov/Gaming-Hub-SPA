@@ -18,8 +18,10 @@ export default function useForm (initialValues, onSubmitHandler) {
     };
 
     const changeValues = (newValues) => {
-        setValues(state => ({...state, ['text']: newValues}));
+        
+        setValues(newValues);
     };
+
 
 
     return {
