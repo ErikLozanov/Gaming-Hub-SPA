@@ -126,6 +126,8 @@ body{
 }
 
 #comment-dropdown {
-    visibility: none;
+    width: 10px;
+    position: relative;
+    left: 500px;
 }
 
