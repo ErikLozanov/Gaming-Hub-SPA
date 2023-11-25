@@ -9,3 +9,6 @@ exports.getAllForGame = async (gameId) => {
 exports.create = async (data) => {
     return Comment.create(data);
 }
+
+exports.update = (commentId, commentData) => Comment.findByIdAndUpdate(commentId, { $set: { text: commentData } },
+    { new: true });
