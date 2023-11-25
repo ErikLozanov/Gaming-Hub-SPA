@@ -1,9 +1,13 @@
+import { useAuthContext } from "../../contexts/AuthContext";
 import styles from "../Shop/Comments.module.css";
 
 import Dropdown from 'react-bootstrap/Dropdown';
 
-export default function Comment({comment}) {
+export default function Comment({comment, onEditComment}) {
 
+  const { userId } = useAuthContext();
+
+  const isOwner = userId === comment._ownerId._id;
     return (
         <div className={styles["be-comment"]}>
         <div className={styles["be-img-comment"]}>
@@ -22,13 +26,18 @@ export default function Comment({comment}) {
           <span className={styles["be-comment-time"]}>
             <div id={styles["comment-dropdown"]} >
           <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <Dropdown.Toggle variant="none" id="dropdown-basic">
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+        {isOwner ? (
+          <>
+        <Dropdown.Item onClick={(e) => onEditComment(e,comment)} href="#edit-comment">Edit</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Delete</Dropdown.Item> 
+          </>) : (
+        <Dropdown.Item href="#/action-2">Report</Dropdown.Item>
+        )}
+
       </Dropdown.Menu>
     </Dropdown>
     </div>
