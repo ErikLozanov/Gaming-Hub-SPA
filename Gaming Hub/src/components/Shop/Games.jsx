@@ -3,12 +3,17 @@ import Game from "../partials/Game";
 import useForm from "../../hooks/useForm";
 import { useState } from "react";
 import Spinner from 'react-bootstrap/Spinner';
+import { useGameContext } from "../../contexts/GameContext";
 
-export default function Games({ allGames, searchGame }) {
+export default function Games() {
+
+    const {games, searchGame} = useGameContext;
     
     const { onSubmit, values, changeHandler } = useForm({
         title: "",
     },searchGame);
+
+
 
     return (
         <>
@@ -45,7 +50,7 @@ export default function Games({ allGames, searchGame }) {
                     </div>
                     <div className="row trending-box">
                         
-                        {allGames.length === 0 ? <h1>Currently there are no added games!</h1> : allGames.map((game) => (
+                        {games.length === 0 ? <h1>Currently there are no added games!</h1> : games.map((game) => (
                             <Game key={game._id} game={game} />
                         ))}
                     </div>
