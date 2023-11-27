@@ -10,6 +10,11 @@ export const gameServiceFactory = (token) => {
         return result;
     };
 
+    const getTrending = async () => {
+        const result = await get(`${baseUrl}/trending`);
+        return result;
+    }
+
     const getAllById = async (userId) => {
         const result = await get(`${baseUrl}/my-added-games/${userId}`);
         return result;
@@ -42,6 +47,7 @@ export const gameServiceFactory = (token) => {
 
     return {
         getAll,
+        getTrending,
         getAllById,
         getOne,
         create,

@@ -67,6 +67,7 @@ export default function GameProvider ({children}) {
 
     const contextValues = {
         games,
+        setGames,
         onCreateGameSubmit,
         onEditGameSubmit,
         onDeleteGame,
