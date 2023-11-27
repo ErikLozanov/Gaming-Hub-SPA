@@ -1,18 +1,23 @@
 import { Link } from "react-router-dom";
 import Game from "../partials/Game";
 import useForm from "../../hooks/useForm";
-import { useState } from "react";
-import Spinner from 'react-bootstrap/Spinner';
 import { useGameContext } from "../../contexts/GameContext";
+import { useEffect } from "react";
+import { gameServiceFactory } from "../../services/gameService";
 
 export default function Games() {
+    const gameService = gameServiceFactory();
+    const {games, setGames, searchGame} = useGameContext();
 
-    const {games, searchGame} = useGameContext;
+    useEffect(() => {
+        gameService.getAll()
+        .then(res => setGames(res))
+        .catch(err => console.log(err.message));
+    },[]);
     
     const { onSubmit, values, changeHandler } = useForm({
         title: "",
     },searchGame);
-
 
 
     return (
@@ -50,7 +55,7 @@ export default function Games() {
                     </div>
                     <div className="row trending-box">
                         
-                        {games.length === 0 ? <h1>Currently there are no added games!</h1> : games.map((game) => (
+                        {games.length === 0 ? <h1>No games found!</h1> : games.map((game) => (
                             <Game key={game._id} game={game} />
                         ))}
                     </div>
