@@ -2,8 +2,11 @@ import { Link, useParams } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import { useEffect, useState } from "react";
 import { gameServiceFactory } from "../../services/gameService";
+import { useGameContext } from "../../contexts/GameContext";
 
-export default function EditGame({ onEditGameSubmit }) {
+export default function EditGame() {
+    
+    const {onEditGameSubmit} = useGameContext();
     
     const { values, changeHandler, onSubmit, changeValues } = useForm(
         {
