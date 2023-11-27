@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import TrendingGame from "../partials/TrendingGame";
 
-export default function Trending({allGames}) {
-
-  allGames = allGames.sort((a,b) => b.boughtBy.length - a.boughtBy.length).slice(0,4);
+export default function Trending({trendingGames}) {
 
     return (
         <>
@@ -21,7 +19,7 @@ export default function Trending({allGames}) {
           <Link to="/games">View All</Link>
         </div>
       </div>
-      {allGames.map(game => <TrendingGame key={game._id} game={game}/>)}
+      {trendingGames.map(game => <TrendingGame key={game._id} game={game}/>)}
     </div>
   </div>
 </div>
