@@ -40,7 +40,7 @@ function App() {
      <Footer />
      </GameProvider>
     </AuthProvider>
-  )
-}
+  );
+};
 
 export default App
