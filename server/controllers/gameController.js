@@ -7,7 +7,6 @@ router.get('/', async (req, res) => {
     res.json(games);
 });
 
-
 router.post("/create-game", async (req, res) => {
     try {
         const result = await gameManager.create(req.body);
@@ -18,6 +17,19 @@ router.post("/create-game", async (req, res) => {
             message: 'Cannot create game'
         });
     }
+});
+
+router.get('/search/:game', async (req, res) => {
+    const game = req.params.game;
+    let games;
+    console.log(game);
+    if(game) {
+        const query = { title: { $regex: new RegExp(game, 'i') } };   
+         games = await gameManager.searchGame(query); 
+        } else {
+         games = await gameManager.getAll();     
+        }
+        res.json(games);
 });
 
 router.get('/my-added-games/:userId', async (req, res) => {
@@ -64,22 +76,5 @@ router.delete('/:gameId', async (req, res) => {
 
 });
 
-router.get('/search', async (req, res) => {
-
-    try {
-        const searchTerm = req.query.q; // Assuming the search term is passed as a query parameter named 'q'
-        
-        // Use $regex to perform a case-insensitive search
-        const query = { searchField: { $regex: new RegExp(searchTerm, 'i') } };
-    
-        const result = await gameManager.searchGame(query);
-    
-        res.json(result);
-      } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-      }
-
-});
 
 module.exports = router;
