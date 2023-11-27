@@ -8,8 +8,10 @@ import { gameServiceFactory } from "../../services/gameService";
 
 import { useAuthContext } from "../../contexts/AuthContext";
 import Comments from "./Comments";
+import { useGameContext } from "../../contexts/GameContext";
 
-export default function Details({onDeleteGame, buyGame}) {
+export default function Details() {
+  const {onDeleteGame, buyGame} = useGameContext();
   const { id } = useParams();
   const [gameInfo, setGameInfo] = useState({});
   const [isBought, setIsBought] = useState(false);
