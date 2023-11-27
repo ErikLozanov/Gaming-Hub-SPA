@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import useForm from "../../hooks/useForm";
+import { useGameContext } from "../../contexts/GameContext";
 
-export default function CreateGame({ onCreateGameSubmit }) {
+export default function CreateGame() {
+
+    const {onCreateGameSubmit} = useGameContext();
     const { values, changeHandler, onSubmit } = useForm(
         {
             title: "",
