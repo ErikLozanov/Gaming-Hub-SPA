@@ -23,7 +23,7 @@ export const gameServiceFactory = (token) => {
 
     const searchGame = async (params) => {
         try {
-            const result = await get(`${baseUrl}/search/${params}`);
+            const result = await get(`${baseUrl}/search?query=${encodeURIComponent(params)}`);
             return result;
         } catch (error) {
             console.log(error.message);

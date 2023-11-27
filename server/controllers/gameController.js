@@ -19,17 +19,15 @@ router.post("/create-game", async (req, res) => {
     }
 });
 
-router.get('/search/:game', async (req, res) => {
-    const game = req.params.game;
-    let games;
+router.get('/search/', async (req, res) => {
+    if (!req.query.query) {
+        return res.status(400).send('Please provide a search query');
+      }
+    const game = req.query.query;
     console.log(game);
-    if(game) {
-        const query = { title: { $regex: new RegExp(game, 'i') } };   
-         games = await gameManager.searchGame(query); 
-        } else {
-         games = await gameManager.getAll();     
-        }
-        res.json(games);
+    const query = { title: { $regex: new RegExp(game, 'i') } };   
+    const games = await gameManager.searchGame(query); 
+    res.json(games);
 });
 
 router.get('/my-added-games/:userId', async (req, res) => {
