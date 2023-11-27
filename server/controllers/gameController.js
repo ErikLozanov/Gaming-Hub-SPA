@@ -22,14 +22,13 @@ router.post("/create-game", async (req, res) => {
 router.get('/search', async (req, res) => {
     if (!req.query.query) {
         const games = await gameManager.getAll();
-        res.json(games);       
-      }
-      
-    const game = req.query.query;
-    console.log(game);
-    const query = { title: { $regex: new RegExp(game, 'i') } };   
-    const games = await gameManager.searchGame(query); 
-    res.json(games);
+         res.json(games);       
+      } else { 
+          const game = req.query.query;
+          const query = { title: { $regex: new RegExp(game, 'i') } };   
+          const games = await gameManager.searchGame(query); 
+          res.json(games);
+        }
 });
 
 router.get('/trending', async (req, res) => {
