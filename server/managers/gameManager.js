@@ -18,7 +18,24 @@ exports.delete = (gameId) => Game.findByIdAndDelete(gameId);
 
 exports.getByOwner = (userId) => Game.find({_ownerId: userId});
 
-// exports.boughtGame = (gameId, updatedGame) => Game.findByIdAndUpdate(gameId, updatedGame);
+exports.getTrending = () => {
+    return Game.find()
+    .exec()
+    .then(games => {
+      // Sort the games in descending order based on the length of 'boughtBy' array
+      const sortedGames = games.sort((a, b) => b.boughtBy.length - a.boughtBy.length);
+  
+      // Get the top 4 games
+      const top4Games = sortedGames.slice(0, 4);
+  
+      // Do something with the results
+      return top4Games;
+    })
+    .catch(err => {
+      // Handle errors
+      console.error('Error:', err);
+    });
+};
 
 exports.searchGame = async (query) => {
   const result = await Game.find(query).exec();

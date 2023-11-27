@@ -19,14 +19,21 @@ router.post("/create-game", async (req, res) => {
     }
 });
 
-router.get('/search/', async (req, res) => {
+router.get('/search', async (req, res) => {
     if (!req.query.query) {
-        return res.status(400).send('Please provide a search query');
+        const games = await gameManager.getAll();
+        res.json(games);       
       }
+      
     const game = req.query.query;
     console.log(game);
     const query = { title: { $regex: new RegExp(game, 'i') } };   
     const games = await gameManager.searchGame(query); 
+    res.json(games);
+});
+
+router.get('/trending', async (req, res) => {
+    const games = await gameManager.getTrending();
     res.json(games);
 });
 
