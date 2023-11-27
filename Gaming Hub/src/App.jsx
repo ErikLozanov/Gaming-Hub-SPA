@@ -63,7 +63,7 @@ function App() {
 
   const searchGame = async (gameData) => {
     let result = await gameService.searchGame(gameData.title);
-    console.log(result);
+    setGames(result);
   };
 
   const buyGame = async (gameId,buyerId, bought) => {
