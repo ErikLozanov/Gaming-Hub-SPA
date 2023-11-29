@@ -9,7 +9,8 @@ export default function Register() {
     const { onRegisterSubmit } = useAuthContext();
     const emailRef = useRef();
     const { values, changeHandler, onSubmit } = useForm(
-        {
+        {   
+            username: "",
             email: "",
             password: "",
             repeatPassword: "",
@@ -46,6 +47,14 @@ export default function Register() {
         ref={emailRef}
         value={values.email}
         placeholder="Email"
+        onChange={changeHandler}
+        required
+    />
+    <input
+        type="text"
+        name="username"
+        value={values.username}
+        placeholder="Username"
         onChange={changeHandler}
         required
     />
