@@ -38,4 +38,11 @@ router.get('/logout', (req, res) => {
     res.end();
 })
 
+
+router.patch('/my-profile/edit', async (req, res) => {
+    const userId = req.body._id;
+    const editUser = await userManager.edit(userId, req.body);
+    res.json(editUser);
+});
+
 module.exports = router;
