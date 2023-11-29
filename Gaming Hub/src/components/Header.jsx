@@ -32,14 +32,16 @@ export default function Header() {
             <li>
               <Link to="/games/create-game">Add Game</Link>
             </li>
-            <li>
-              <Link to="/games/my-added-games">My Added Games</Link>
-            </li>
             </>
             }
             <li>
               <Link to="/contact-us">Contact Us</Link>
             </li>
+            {isAuthenticated &&
+            <li>
+              <Link to="/users/my-profile/">My Profile</Link>
+            </li>
+            }
             {!isAuthenticated &&
             <li>
               <Link to="/users/login">Sign In</Link>
