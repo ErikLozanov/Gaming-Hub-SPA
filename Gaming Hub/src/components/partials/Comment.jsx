@@ -13,7 +13,7 @@ export default function Comment({comment, onEditComment, onDeleteComment}) {
         <div className={styles["be-img-comment"]}>
           <a href="blog-detail-2.html">
             <img
-              src="https://bootdey.com/img/Content/avatar/avatar1.png"
+              src={comment._ownerId.profilePicture}
               alt=""
               className={styles["be-ava-comment"]}
             />
