@@ -23,7 +23,7 @@ export default function MyAddedGames () {
       <div className="col-lg-12">
         <h3>My Added Games</h3>
         <span className="breadcrumb">
-          <Link to="/">Home</Link> &gt; My Added Games
+          <Link to="/">Home</Link> &gt; <Link to="/users/my-profile">My Profile</Link> &gt; My Added Games
         </span>
       </div>
     </div>
