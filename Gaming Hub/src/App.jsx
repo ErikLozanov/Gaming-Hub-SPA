@@ -32,13 +32,14 @@ function App() {
         <Route path='/contact-us' element={<ContactUs />} />
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/register' element={<Register />} />
+        
+        <Route element={<AuthGuard />}>
         <Route path='/users/logout' element={<Logout />} />
         <Route path='/games/my-added-games' element={<MyAddedGames />} />
         <Route path='/games/edit-game/:gameId' element={<EditGame />} />
-        
-        <Route element={<AuthGuard />}>
         <Route path='/games/create-game' element={<CreateGame />} />
         </Route>
+        
         <Route path='*' element={<ErrorPage />} />
       </Routes>
      <Footer />
