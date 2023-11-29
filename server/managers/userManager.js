@@ -39,6 +39,7 @@ function getAuthResult (user) {
 
     const result = {
             email: user.email,
+            username: user.username,
             accessToken: token,
             _id: user._id
     };
