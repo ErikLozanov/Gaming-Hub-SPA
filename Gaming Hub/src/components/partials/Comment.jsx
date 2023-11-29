@@ -21,7 +21,7 @@ export default function Comment({comment, onEditComment, onDeleteComment}) {
         </div>
         <div className={styles["be-comment-content"]}>
           <span className={styles["be-comment-name"]}>
-            <a href="blog-detail-2.html">{comment._ownerId.email}</a>
+            <a href="blog-detail-2.html">{comment._ownerId.username}</a>
           </span>
           <span className={styles["be-comment-time"]}>
             <div id={styles["comment-dropdown"]} >
