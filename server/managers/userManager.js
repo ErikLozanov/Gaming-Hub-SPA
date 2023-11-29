@@ -30,6 +30,11 @@ exports.login =async ({email, password}) => {
     return result;
 };
 
+exports.edit = async (userId, userData) => {
+    const editedUser = await User.findByIdAndUpdate(userId, userData, { new: true });
+    return editedUser;
+}
+
 function getAuthResult (user) {
     const payload = {
         _id: user._id,
@@ -41,6 +46,8 @@ function getAuthResult (user) {
             email: user.email,
             username: user.username,
             accessToken: token,
+            profilePicture: user.profilePicture,
+            description: user.description,
             _id: user._id
     };
 
