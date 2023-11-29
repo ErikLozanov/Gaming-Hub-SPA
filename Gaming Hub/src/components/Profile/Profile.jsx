@@ -54,10 +54,11 @@ export default function Profile() {
         
             <div className={styles['added-games']}>
         <h3>Added Games({myGames.length})</h3>
-
+        {myGames.length > 4 &&
         <div className="main-button">
           <Link to="added-games">View All</Link>
         </div>
+        }
             </div>
 <div className="row trending-box">
   {myGames.length === 0 ?
