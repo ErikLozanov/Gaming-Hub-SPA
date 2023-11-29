@@ -1,3 +1,5 @@
+import Button from 'react-bootstrap/Button';
+
 import { Link } from "react-router-dom";
 
 import styles from "./Profile.module.css";
@@ -5,18 +7,38 @@ import { useEffect, useState } from "react";
 import { gameServiceFactory } from "../../services/gameService";
 import { useAuthContext } from "../../contexts/AuthContext";
 import AddedGame from "../partials/AddedGame";
+import EditProfile from './EditProfile';
+
+import * as authService from '../../services/authService';
 
 export default function Profile() {
-
+    const [show, setShow] = useState(false);
     const [myGames,setMyGames] = useState([]);
     const {getAllById} = gameServiceFactory();
     const {userId} = useAuthContext();
+    const {username,description,profilePicture,_id} = JSON.parse(sessionStorage.getItem('auth'));
+    const [profileInfo, setProfileInfo] = useState({username,description,profilePicture});
+    
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
 
     useEffect(() => {
       getAllById(userId)
       .then(res => setMyGames(res))
       .catch(err => console.log(err.message));
     },[]);
+
+
+    async function onEditProfile(data) {
+      try {
+        const editProfile = await authService.editProfile({...data, _id});
+        console.log(editProfile);
+        setProfileInfo({username: editProfile.username, description: editProfile.description, profilePicture: editProfile.profilePicture});
+        sessionStorage.setItem('auth', JSON.stringify(editProfile));
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
 
     return (
     <>
@@ -26,29 +48,30 @@ export default function Profile() {
       <div className="col-lg-12">
         <h3>My Profile</h3>
         <span className="breadcrumb">
-          <Link to="/">Home</Link> &gt; My Profile
+          <Link>Home</Link> &gt; My Profile
         </span>
       </div>
     </div>
   </div>
 </div>
 <div className={styles['main-container']}>
-
+      <EditProfile show={show} handleClose={handleClose} onEditProfile={onEditProfile}/>
     <section className={styles['main-section']}>
         <div>
 
         <div className={styles['main-photo']}>
-      <img src="https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D" alt="Your Name" className={styles['profile-picture']} />
+      <img src={profileInfo.profilePicture} alt={profileInfo.username} className={styles['profile-picture']} />
         <div className={styles['main-info']}>
-      <h1>Gosho</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor libero non est consequat, vel ultricies ligula tempor.</p>
+      <h1>{profileInfo.username}</h1>
+      <p>{profileInfo.description}</p>
         
         <p>Joined: 2017</p>
         </div>
       </div>
       <div className={styles['main-info']}>
-
-      <Link>Edit Profile</Link>
+      <Button variant="primary" onClick={handleShow}>
+        Edit
+      </Button>
       </div>
         </div>
         
