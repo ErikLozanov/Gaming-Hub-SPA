@@ -15,3 +15,9 @@ export const logout = requester.logout;
 //         logout: () => request.get(`${baseUrl}/logout`),
 //     }
 // };
+
+export const editProfile = async (profileInfo) => {
+    const result = await requester.patch(`${baseUrl}/users/my-profile/edit`, profileInfo);
+    return result
+
+}
