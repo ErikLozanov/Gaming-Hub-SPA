@@ -16,6 +16,7 @@ import MyAddedGames from './components/MyAddedGames/MyAddedGames';
 
 import AuthProvider from './contexts/AuthContext';
 import GameProvider from './contexts/GameContext';
+import AuthGuard from './components/AuthGuard';
 
 function App() {
 
@@ -27,14 +28,17 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/games' element={<Games/>} />
-        <Route path='/games/my-added-games' element={<MyAddedGames />} />
         <Route path='/games/details/:id' element={<Details />} />
         <Route path='/contact-us' element={<ContactUs />} />
-        <Route path='/games/create-game' element={<CreateGame />} />
-        <Route path='/games/edit-game/:gameId' element={<EditGame />} />
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/register' element={<Register />} />
         <Route path='/users/logout' element={<Logout />} />
+        <Route path='/games/my-added-games' element={<MyAddedGames />} />
+        <Route path='/games/edit-game/:gameId' element={<EditGame />} />
+        
+        <Route element={<AuthGuard />}>
+        <Route path='/games/create-game' element={<CreateGame />} />
+        </Route>
         <Route path='*' element={<ErrorPage />} />
       </Routes>
      <Footer />
