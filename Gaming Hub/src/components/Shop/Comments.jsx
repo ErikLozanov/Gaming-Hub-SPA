@@ -28,13 +28,13 @@ export default function Comments() {
         .catch((err) => console.log(err.message));
     },[])
 
-
   async function onCommentSubmit(values) {
         const userId = sessionStorage.getItem('userId');
         const email = sessionStorage.getItem('email');
+        const username = sessionStorage.getItem('username');
         const commentDate = formatDate(new Date());
         const newComment = await commentService.create(values.text, id, userId, commentDate);
-        const modifiedComment = {...newComment, _ownerId: {_id: newComment._ownerId , email}};
+        const modifiedComment = {...newComment, _ownerId: {_id: newComment._ownerId , email, username}};
         setComments(state => [...state, modifiedComment]);
     };
 
