@@ -1,0 +1,69 @@
+/* your-stylesheet.module.css */
+
+.main-container {
+    font-family: Arial, sans-serif;
+    background-color: #e9ebee;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+  }
+  
+  .main-section {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .main-photo {
+    display: flex;
+    gap: 30px;
+  }
+  
+  .profile-picture {
+    border-radius: 8px;
+    max-width: 300px;
+    height: auto;
+    max-height: 200px;
+  }
+  
+  h1, h2, p {
+    color: #333;
+  }
+  
+  a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .social-icons {
+    margin-top: 10px;
+  }
+  
+  .social-icons a {
+    margin-right: 10px;
+  }
+
+  .added-games {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  
