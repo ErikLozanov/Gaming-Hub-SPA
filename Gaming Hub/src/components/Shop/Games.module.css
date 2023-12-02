@@ -5,4 +5,5 @@
 .search-search {
     width: 300px;
     margin: auto;
+    display: flex;
 }
