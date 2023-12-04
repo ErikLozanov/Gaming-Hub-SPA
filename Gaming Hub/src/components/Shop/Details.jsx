@@ -33,12 +33,16 @@ export default function Details() {
       .catch((err) => console.log(err.message));
   }, []);
 
+
   const bought = () => {
     setIsBought(true);
     setBoughtTimes(state => state + 1);
   }
-
-  const isOwner = gameInfo._ownerId === userId;
+  console.log(gameInfo);
+  // const isOwner = gameInfo._ownerId._id === userId;
+  const isOwner = gameInfo._ownerId && gameInfo._ownerId._id === userId;
+  const ownerId = gameInfo._ownerId ? gameInfo._ownerId._id : null;
+  const isMyProfile = sessionStorage.getItem('userId') === ownerId ? '/users/my-profile/' : `/users/${ownerId}/profile`;
 
   return (
     <>
@@ -118,6 +122,14 @@ export default function Details() {
                 </li>
                 <li>
                   <span>Bought by:</span> {boughtTimes} {boughtTimes == 1 ? 'player' : 'players' }
+                </li>
+                <li>
+                <span>Added by:</span>
+                {gameInfo._ownerId ? (
+                <Link to={isMyProfile}>{gameInfo._ownerId.username}</Link>
+                  ) : (
+               <span>Unknown User</span>
+                )}
                 </li>
               </ul>
             </div>
