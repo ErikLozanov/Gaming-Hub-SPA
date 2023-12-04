@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
 import styles from "../Shop/Comments.module.css";
 
@@ -11,13 +12,13 @@ export default function Comment({comment, onEditComment, onDeleteComment}) {
     return (
         <div className={styles["be-comment"]}>
         <div className={styles["be-img-comment"]}>
-          <a href="blog-detail-2.html">
+          <Link to={`/users/${comment._ownerId._id}/profile`}>
             <img
               src={comment._ownerId.profilePicture}
               alt=""
               className={styles["be-ava-comment"]}
             />
-          </a>
+          </Link>
         </div>
         <div className={styles["be-comment-content"]}>
           <span className={styles["be-comment-name"]}>
