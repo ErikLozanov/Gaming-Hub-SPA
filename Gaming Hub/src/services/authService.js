@@ -18,6 +18,11 @@ export const logout = requester.logout;
 
 export const editProfile = async (profileInfo) => {
     const result = await requester.patch(`${baseUrl}/users/my-profile/edit`, profileInfo);
-    return result
+    return result;
+};
 
-}
+export const getProfile = async (userId) => {
+    const result = await requester.get(`${baseUrl}/users/${userId}/profile`);
+
+    return result;
+};
