@@ -35,6 +35,10 @@ exports.edit = async (userId, userData) => {
     return editedUser;
 }
 
+exports.getProfile = async (userId) => {
+    return User.findById(userId);
+}
+
 function getAuthResult (user) {
     const payload = {
         _id: user._id,
