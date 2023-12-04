@@ -22,8 +22,6 @@ export default function Comments() {
     const { isAuthenticated } = useAuthContext();
     const {onSubmit,values,changeHandler,changeValues} = useForm({text:''}, onEdit ? onEditCommentSubmit : onCommentSubmit);
 
-    console.log(comments);
-
     useEffect(() => {
         const comments = commentService.getAllForGame(id)
         .then(res => setComments(res))

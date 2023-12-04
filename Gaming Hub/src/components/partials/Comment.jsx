@@ -7,12 +7,12 @@ import Dropdown from 'react-bootstrap/Dropdown';
 export default function Comment({comment, onEditComment, onDeleteComment}) {
 
   const { userId } = useAuthContext();
-
+  const isMyProfile = sessionStorage.getItem('userId') === comment._ownerId._id ? '/users/my-profile/' :  `/users/${comment._ownerId._id}/profile`;
   const isOwner = userId === comment._ownerId._id;
     return (
         <div className={styles["be-comment"]}>
         <div className={styles["be-img-comment"]}>
-          <Link to={`/users/${comment._ownerId._id}/profile`}>
+          <Link to={isMyProfile}>
             <img
               src={comment._ownerId.profilePicture}
               alt=""
