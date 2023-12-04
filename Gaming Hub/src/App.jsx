@@ -18,6 +18,7 @@ import AuthProvider from './contexts/AuthContext';
 import GameProvider from './contexts/GameContext';
 import AuthGuard from './components/AuthGuard';
 import Profile from './components/MyProfile/Profile';
+import Profiles from './components/Profiles/Profiles';
 
 function App() {
 
@@ -33,7 +34,7 @@ function App() {
         <Route path='/contact-us' element={<ContactUs />} />
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/register' element={<Register />} />
-        
+        <Route path='/users/:userId/profile' element={<Profiles />} />
         <Route element={<AuthGuard />}>
         <Route path='/users/my-profile/' element={<Profile />} />
         <Route path='/users/logout' element={<Logout />} />
