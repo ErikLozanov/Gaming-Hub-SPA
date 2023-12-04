@@ -20,7 +20,7 @@ export default function Profiles() {
   <div className="container">
     <div className="row">
       <div className="col-lg-12">
-        <h3>My Profile</h3>
+        <h3>Profile</h3>
         <span className="breadcrumb">
           <Link to='/'>Home</Link> &gt; Profile
         </span>
