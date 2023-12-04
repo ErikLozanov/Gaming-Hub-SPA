@@ -5,7 +5,21 @@ exports.getAll = async () => {
     return result;
 }
 
-exports.getOne = (gameId) => Game.findById(gameId);
+exports.getOne = async (gameId) => {
+  try {
+    const game = await Game.findById(gameId).populate('_ownerId').exec();
+    if (!game) {
+      // Handle the case where the game with the specified ID is not found
+      return null;
+    }
+    // Access populated fields here
+    return game;
+  } catch (error) {
+    // Handle errors here
+    console.error(error);
+    throw error; // Rethrow the error for further handling, or handle it accordingly
+  }
+};
 
 exports.create = (gameData) => {
 
