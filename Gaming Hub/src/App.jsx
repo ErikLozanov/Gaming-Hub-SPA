@@ -17,7 +17,7 @@ import MyAddedGames from './components/MyAddedGames/MyAddedGames';
 import AuthProvider from './contexts/AuthContext';
 import GameProvider from './contexts/GameContext';
 import AuthGuard from './components/AuthGuard';
-import Profile from './components/Profile/Profile';
+import Profile from './components/MyProfile/Profile';
 
 function App() {
 
