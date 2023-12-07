@@ -9,7 +9,8 @@ exports.register =async (userData) => {
             const result = getAuthResult(user);
             return result;
         } else {
-           throw new Error();
+            console.log('hi!');
+           throw new Error('There is already a user with this email.');
         }
 };
 
