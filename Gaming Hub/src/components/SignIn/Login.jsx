@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
 
 export default function Login() {
     const emailRef = useRef();
-    const { onLoginSubmit } = useAuthContext();
+    const { onLoginSubmit, loginError, setLoginError } = useAuthContext();
     const { values, changeHandler, onSubmit } = useForm(
         {
             email: "",
@@ -19,6 +19,10 @@ export default function Login() {
     useEffect(() => {
         emailRef.current.focus()
     },[])
+
+    setTimeout(()=> {
+        setLoginError('');
+      }, 10000)
 
     return (
         <div className="sign-page">
@@ -59,7 +63,9 @@ export default function Login() {
                             required
                         />
                         <button>Sign in</button>
+                    {loginError ? <p style={{color:"red", marginLeft: '80px'}}>{loginError}</p> : null}
                     </form>
+                    
                     <p className="register-redirect">Don't have an account? <Link to='/users/register'>Click Here</Link> to register.</p>
                 </div>
             </div>
