@@ -27,9 +27,10 @@ export default function AuthProvider ({children}) {
     const onRegisterSubmit = async (values) => {
         const {repeatPassword, ...registerData} = values;
         if(repeatPassword !== registerData.password) {
-            return;
+            alert('Passwords mismatch!');
+            throw new Error('Passwords mismatch!');
         }
-
+            console.log(registerData);
         try {
             const result = await register(registerData);
 

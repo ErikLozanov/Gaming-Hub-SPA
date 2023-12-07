@@ -10,11 +10,11 @@ router.get('/:userId/profile', async (req, res) => {
 });
 
 router.post('/register',async (req, res) => {
-        const {email} = req.body;
-        req.user = email;
+        const {username} = req.body;
+        req.user = username;
 
     try {
-        const result = await userManager.register(email);
+        const result = await userManager.register(username);
 
         res.json(result);
         
