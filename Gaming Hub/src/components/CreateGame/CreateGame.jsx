@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import useForm from "../../hooks/useForm";
 import { useGameContext } from "../../contexts/GameContext";
+import useForm from "../../hooks/useForm";
 
 export default function CreateGame() {
 
-    const {onCreateGameSubmit} = useGameContext();
+    const {onCreateGameSubmit, createError, setCreateError} = useGameContext();
     const { values, changeHandler, onSubmit } = useForm(
         {
             title: "",
@@ -16,6 +16,8 @@ export default function CreateGame() {
         },
         onCreateGameSubmit
     );
+
+    setTimeout(() => setCreateError(''), 10000);
 
     return (
         <>
@@ -43,6 +45,7 @@ export default function CreateGame() {
                             id="title"
                             name="title"
                             placeholder="Enter game title..."
+                            required
                         />
 
                         <label htmlFor="category">Category:</label>
@@ -53,6 +56,7 @@ export default function CreateGame() {
                             id="category"
                             name="category"
                             placeholder="Enter game category..."
+                            required
                         />
 
                         <label htmlFor="year">Year:</label>
@@ -64,6 +68,7 @@ export default function CreateGame() {
                             name="year"
                             min="1"
                             placeholder="1"
+                            required
                         />
 
                         <label htmlFor="game-img">Image:</label>
@@ -74,6 +79,7 @@ export default function CreateGame() {
                             id="img"
                             name="img"
                             placeholder="Upload a photo..."
+                            required
                         />
 
                         <label htmlFor="description">Description:</label>
@@ -82,7 +88,7 @@ export default function CreateGame() {
                             id="description"
                             value={values.description}
                             onChange={changeHandler}
-
+                            required
                         ></textarea>
                         <label htmlFor="game-price">Price:</label>
                         <input
@@ -91,6 +97,7 @@ export default function CreateGame() {
                             type="number"
                             id="price"
                             name="price"
+                            required
                         />
                         <input
                             className="add-game-btn"
@@ -99,6 +106,7 @@ export default function CreateGame() {
                         />
                     </div>
                 </form>
+                {createError ? <h3 style={{color:"red", marginLeft: '750px'}}>{createError}</h3> : null}
             </section>
         </>
     );
