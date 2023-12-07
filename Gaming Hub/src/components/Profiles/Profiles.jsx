@@ -3,15 +3,24 @@ import { useEffect, useState } from "react";
 import styles from "../MyProfile/Profile.module.css";
 
 import * as authService from '../../services/authService';
+import {gameServiceFactory} from "../../services/gameService";
+import AddedGame from "../partials/AddedGame";
 
 export default function Profiles() {
         const [profileData, setProfileData] = useState({});
+        const [profileAddedGames, setProfileAddedGames] = useState([]);
         const {userId} = useParams();
+        const gameService = gameServiceFactory();
+
 
         useEffect(() => {
           authService.getProfile(userId)
           .then(res => setProfileData(res))
           .catch(err => console.log(err.message));
+
+          gameService.getAllById(userId)
+          .then(res => setProfileAddedGames(res))
+          .catch(err => alert(err.message));
         },[]);
 
     return(
@@ -46,16 +55,13 @@ export default function Profiles() {
         </div>
         
             <div className={styles['added-games']}>
-        <h3>Added Games(0)</h3>
-        <div className="main-button">
-          <Link to="added-games">View All</Link>
-        </div>
+        <h3>Added Games({profileAddedGames.length})</h3>
         
             </div>
 <div className="row trending-box">
-  {/* {myGames.length === 0 ?
-  <h1>You have no games added yet!</h1>
-   : myGames.slice(0,4).map(game => <AddedGame key={game._id} game={game}/>)} */}
+  {profileAddedGames.length === 0 ?
+  <h1>{profileData.username} has no games added yet!</h1>
+   : profileAddedGames.map(game => <AddedGame key={game._id} game={game}/>)}
 </div>
     </section>
   </div>
