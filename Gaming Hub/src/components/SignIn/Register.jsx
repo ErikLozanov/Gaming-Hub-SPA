@@ -6,7 +6,7 @@ import useForm from "../../hooks/useForm";
 
 
 export default function Register() {
-    const { onRegisterSubmit } = useAuthContext();
+    const { onRegisterSubmit,setRegisterError, registerError } = useAuthContext();
     const emailRef = useRef();
     const { values, changeHandler, onSubmit } = useForm(
         {   
@@ -19,6 +19,10 @@ export default function Register() {
     );
 
     useEffect(() => {emailRef.current.focus()},[])
+
+    setTimeout(()=> {
+        setRegisterError('');
+      }, 10000)
 
     return (
         <div className="sign-page">
@@ -76,6 +80,7 @@ export default function Register() {
     />
     <button>Sign up</button>
 </form>
+     {registerError && (<p style={{color:"red", marginLeft: '80px'}}>{registerError}</p>)}
     <p className="login-redirect">Already have an account? <Link to='/users/login'>Click Here</Link> to log in.</p>
 </div> 
             </div>
