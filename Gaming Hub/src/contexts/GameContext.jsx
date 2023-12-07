@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { createContext, useContext, useEffect, useState } from 'react';
 
 import {gameServiceFactory} from '../services/gameService';
+import isValidImageUrl from '../utils/imgValidator';
 
 
 export const GameContext = createContext();
@@ -10,7 +11,9 @@ export const GameContext = createContext();
 export default function GameProvider ({children}) {
     const navigate = useNavigate();
     const [games,setGames] = useState([]);
+    const [createError, setCreateError] = useState('');
     const gameService = gameServiceFactory();
+
   
     useEffect(() => {
       gameService.getAll()
@@ -21,10 +24,30 @@ export default function GameProvider ({children}) {
   
     const onCreateGameSubmit = async (data) => {
       const userId = sessionStorage.getItem('userId');
-      const newGame = await gameService.create({...data, _ownerId: userId});
-      setGames(state => [...state, newGame]);
-  
-      navigate('/games');
+
+      if(!isValidImageUrl(data.img)) {
+        setCreateError('Please enter a valid URL!');
+        return;
+      };
+
+      if(data.description.length < 100) {
+        setCreateError('Description should be at least 100 characters!');
+        return;
+      };
+
+      if(data.year < 1950 || data.year > 2030) {
+        setCreateError('Please enter a valid year!');
+      };
+
+      try {
+        const newGame = await gameService.create({...data, _ownerId: userId});
+        setGames(state => [...state, newGame]);
+    
+        navigate('/games');
+      } catch (error) {
+        setCreateError('Invalid game creation. Please try again!');
+      }
+
     };
   
     const onEditGameSubmit = async (data) => {
@@ -73,6 +96,8 @@ export default function GameProvider ({children}) {
         onDeleteGame,
         searchGame,
         buyGame,
+        setCreateError,
+        createError,
     };
 
 
