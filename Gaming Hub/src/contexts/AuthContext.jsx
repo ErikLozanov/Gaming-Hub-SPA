@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 import useSessionStorage from '../hooks/useSessionStorage';
 import {login, register, logout} from '../services/authService';
@@ -9,6 +9,8 @@ export const AuthContext = createContext();
 
 export default function AuthProvider ({children}) {
 
+    const [loginError, setLoginError] = useState('');
+    const [registerError, setRegisterError] = useState('');
     const [auth,setAuth] = useSessionStorage('auth' , {});
     const navigate = useNavigate();
 
@@ -17,20 +19,19 @@ export default function AuthProvider ({children}) {
             const result = await login(data);
 
             setAuth(result);
-
+            
             navigate('/');
         } catch (error) {
-            console.log('There is a problem');
+            setLoginError(error.message);
         }
     };
 
     const onRegisterSubmit = async (values) => {
         const {repeatPassword, ...registerData} = values;
         if(repeatPassword !== registerData.password) {
-            alert('Passwords mismatch!');
-            throw new Error('Passwords mismatch!');
+            setRegisterError('Passwords mismatch!');
+            return;
         }
-            console.log(registerData);
         try {
             const result = await register(registerData);
 
@@ -38,8 +39,7 @@ export default function AuthProvider ({children}) {
 
             navigate('/');
         } catch (error) {
-            console.log('There is a problem');
-            
+            setRegisterError(error.message);
         }
     };
 
@@ -59,6 +59,10 @@ export default function AuthProvider ({children}) {
         userEmail: auth.email,
         username: auth.username,
         isAuthenticated: !!auth.accessToken,
+        loginError,
+        setLoginError,
+        registerError,
+        setRegisterError,
     };
 
     return (
