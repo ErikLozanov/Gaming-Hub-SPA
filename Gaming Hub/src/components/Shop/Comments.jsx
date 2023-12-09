@@ -4,6 +4,8 @@ import styles from "./Comments.module.css"
 import { commentServiceFactory } from "../../services/commentService";
 
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Comment from "../partials/Comment";
@@ -18,6 +20,7 @@ export default function Comments() {
     const [onEdit, setOnEdit] = useState(false);
     const [comments,setComments] = useState([]);
     const [commentId, setCommentId] = useState('');
+    const [reportComment, setReportComment] = useState(false);
     const commentService = commentServiceFactory();
     const { isAuthenticated } = useAuthContext();
     const {onSubmit,values,changeHandler,changeValues} = useForm({text:''}, onEdit ? onEditCommentSubmit : onCommentSubmit);
@@ -56,13 +59,28 @@ export default function Comments() {
     setComments((state) => state.filter(comment => comment._id !== deletedComment._id));
     };
 
+  function onReportComment () {
+    setReportComment(true);
+  };
+
+  function onReportCommentHide () {
+    setReportComment(false);
+  };
+
     return (
         <>
+        {reportComment && 
+        (<Modal show={onReportComment} onHide={onReportCommentHide}>
+        <Modal.Header closeButton>
+          <Modal.Title>Comment successfully reported!</Modal.Title>
+        </Modal.Header>
+      </Modal>)}
+
   <div className="container">
   <div className={styles["be-comment-block"]}>
   <h1 className={styles["comments-title"]}>Comments ({comments.length})</h1>
     {(comments.length == 0 && isAuthenticated) && (<p>There are no comments on this game. Be the first one to leave a comment!</p>)}
-    {comments.map(comment => <Comment key={comment._id} onDeleteComment={onDeleteComment} onEditComment={onEditComment} comment={comment} />)}
+    {comments.map(comment => <Comment key={comment._id} onDeleteComment={onDeleteComment} onEditComment={onEditComment} comment={comment} onReportComment={onReportComment}/>)}
     
     {isAuthenticated ? (onEdit ? 
       (<form onSubmit={onSubmit} id={styles["form-comment"]} className={styles["form-block"]}>
