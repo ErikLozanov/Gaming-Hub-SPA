@@ -32,7 +32,7 @@ export default function Profile() {
     async function onEditProfile(data) {
       try {
         const editProfile = await authService.editProfile({...data, _id});
-        setProfileInfo({username: editProfile.username, description: editProfile.description, profilePicture: editProfile.profilePicture});
+        setProfileInfo({username: editProfile.username, description: editProfile.description, profilePicture: editProfile.profilePicture, joinedDate: editProfile.joinedDate});
         sessionStorage.setItem('auth', JSON.stringify({...editProfile, accessToken: sessionStorage.getItem('authToken')}));
       } catch (error) {
         console.log(error.message);
