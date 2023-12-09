@@ -53,7 +53,8 @@ function getAuthResult (user) {
             accessToken: token,
             profilePicture: user.profilePicture,
             description: user.description,
-            _id: user._id
+            _id: user._id,
+            joinedDate: user.joinedDate
     };
 
     return result;
