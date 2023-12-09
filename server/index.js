@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -8,31 +6,37 @@ const routes = require('./routes');
 
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 60000, // Increase the timeout to 60 seconds
-  poolSize: 1, // Temporarily set poolSize to 1
-})
-  .then(() => {
-    console.log('DB Connected');
-  })
-  .catch(err => {
-    console.error('Error connecting to MongoDB:', err);
-  });
+const MONGODB_URI = 'mongodb://localhost:27017/games';
 
-const corsOptions = {
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  origin: 'https://gaminghub-95a5e.web.app',
-  credentials: true,
-};
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('DB Connected'))
+  .catch(err => console.error('Error connecting to MongoDB:', err));
 
-app.use(cors(corsOptions));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
+// express.json will get AJAX requests (JSON data)
 app.use(express.json());
-app.use(routes);
+const corsOptions = {
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    origin: 'http://localhost:5173',
+    credentials: true,
+  };
+  
+  app.use(cors(corsOptions));
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+
+// app.use(auth);
+
+// app.use((req, res, next) => {
+
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('Access-Control-Allow-Methods', '*');
+//     res.setHeader('Access-Control-Allow-Headers', '*');
+
+//     next();
+// });
+
+
+app.use(routes);
+app.listen(3030, () => {
+  console.log(`Server is running on port 3030`);
 });

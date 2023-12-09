@@ -1,6 +1,6 @@
 export const settings = {
-    // host: 'http://localhost:3030'
-    host: 'https://gaming-hub-mongodb-server.onrender.com'
+    host: 'http://localhost:3030'
+    // host: 'https://gaming-hub-mongodb-server.onrender.com'
 };
 
 async function request(url, options) {
