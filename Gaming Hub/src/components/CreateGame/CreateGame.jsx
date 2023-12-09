@@ -106,7 +106,7 @@ export default function CreateGame() {
                         />
                     </div>
                 </form>
-                {createError ? <h3 style={{color:"red", marginLeft: '750px'}}>{createError}</h3> : null}
+                {createError ? <p style={{color:"red", marginLeft: '800px'}}>{createError}</p> : null}
             </section>
         </>
     );
