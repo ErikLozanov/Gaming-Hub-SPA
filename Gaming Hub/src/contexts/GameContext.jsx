@@ -45,7 +45,7 @@ export default function GameProvider ({children}) {
     
         navigate('/games');
       } catch (error) {
-        setCreateError('Invalid game creation. Please try again!');
+        setCreateError(error.message);
       }
 
     };
