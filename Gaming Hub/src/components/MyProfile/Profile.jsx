@@ -16,8 +16,8 @@ export default function Profile() {
     const [myGames,setMyGames] = useState([]);
     const {getAllById} = gameServiceFactory();
     const {userId} = useAuthContext();
-    const {username,description,profilePicture,_id} = JSON.parse(sessionStorage.getItem('auth'));
-    const [profileInfo, setProfileInfo] = useState({username,description,profilePicture});
+    const {username,description,profilePicture,_id, joinedDate} = JSON.parse(sessionStorage.getItem('auth'));
+    const [profileInfo, setProfileInfo] = useState({username,description,profilePicture, joinedDate});
     
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
@@ -64,7 +64,7 @@ export default function Profile() {
       <h1>{profileInfo.username}</h1>
       <p>{profileInfo.description}</p>
         
-        <p>Joined: 2017</p>
+        <p>Joined: {profileInfo.joinedDate}</p>
         </div>
       </div>
       <div className={styles['main-info']}>
