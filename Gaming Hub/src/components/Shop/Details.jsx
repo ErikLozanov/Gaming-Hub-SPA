@@ -17,7 +17,7 @@ export default function Details() {
   const [isBought, setIsBought] = useState(false);
   const [show, setShow] = useState(false);
   const [boughtTimes, setBoughtTimes] = useState(0);
-
+  console.log(gameInfo);
   const { isAuthenticated, userId } = useAuthContext();
   const gameService = gameServiceFactory();
 

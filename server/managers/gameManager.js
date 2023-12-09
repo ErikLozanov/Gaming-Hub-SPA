@@ -12,6 +12,7 @@ exports.getOne = async (gameId) => {
       // Handle the case where the game with the specified ID is not found
       return null;
     }
+    console.log('hi!');
     // Access populated fields here
     return game;
   } catch (error) {
@@ -36,17 +37,13 @@ exports.getTrending = () => {
     return Game.find()
     .exec()
     .then(games => {
-      // Sort the games in descending order based on the length of 'boughtBy' array
       const sortedGames = games.sort((a, b) => b.boughtBy.length - a.boughtBy.length);
   
-      // Get the top 4 games
       const top4Games = sortedGames.slice(0, 4);
   
-      // Do something with the results
       return top4Games;
     })
     .catch(err => {
-      // Handle errors
       console.error('Error:', err);
     });
 };
