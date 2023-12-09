@@ -32,9 +32,13 @@ export default function Comments() {
         const userId = sessionStorage.getItem('userId');
         const email = sessionStorage.getItem('email');
         const username = sessionStorage.getItem('username');
+        const auth = JSON.parse(sessionStorage.getItem('auth'));
         const commentDate = formatDate(new Date());
         const newComment = await commentService.create(values.text, id, userId, commentDate);
-        const modifiedComment = {...newComment, _ownerId: {_id: newComment._ownerId , email, username}};
+        console.log(newComment);
+        console.log(auth);
+        const modifiedComment = {...newComment, _ownerId: {_id: newComment._ownerId , email, username, profilePicture: auth.profilePicture}};
+        console.log(modifiedComment);
         setComments(state => [...state, modifiedComment]);
     };
 
