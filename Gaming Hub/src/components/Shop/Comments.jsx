@@ -29,16 +29,10 @@ export default function Comments() {
     },[])
 
   async function onCommentSubmit(values) {
-        const userId = sessionStorage.getItem('userId');
-        const email = sessionStorage.getItem('email');
-        const username = sessionStorage.getItem('username');
         const auth = JSON.parse(sessionStorage.getItem('auth'));
         const commentDate = formatDate(new Date());
-        const newComment = await commentService.create(values.text, id, userId, commentDate);
-        console.log(newComment);
-        console.log(auth);
-        const modifiedComment = {...newComment, _ownerId: {_id: newComment._ownerId , email, username, profilePicture: auth.profilePicture}};
-        console.log(modifiedComment);
+        const newComment = await commentService.create(values.text, id, auth._id, commentDate);
+        const modifiedComment = {...newComment, _ownerId: {_id: newComment._ownerId , email: auth.email, username: auth.username, profilePicture: auth.profilePicture}};
         setComments(state => [...state, modifiedComment]);
     };
 
@@ -49,10 +43,10 @@ export default function Comments() {
     };
 
   async function onEditCommentSubmit () {
-    const email = sessionStorage.getItem('email');
     const commentDate = formatDate(new Date());
+    const auth = JSON.parse(sessionStorage.getItem('auth'));
     const editComment = await commentService.edit(values.text, id, commentId, commentDate);
-    const modifiedComment = {...editComment, _ownerId: {_id: editComment._ownerId , email}};
+    const modifiedComment = {...editComment, _ownerId: {_id: editComment._ownerId , email: auth.email, username: auth.username, profilePicture: auth.profilePicture}};
     setComments(state => state.map(comment => comment._id === modifiedComment._id ? modifiedComment : comment));
     setOnEdit(false);
     };
