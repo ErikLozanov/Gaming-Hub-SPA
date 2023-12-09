@@ -14,7 +14,7 @@ router.post("/create-game", async (req, res) => {
         res.status(204).end();
     } catch (err) {
         res.status(400).json({
-            message: 'Cannot create game'
+            message: 'A game with this name is already added!'
         });
     }
 });
