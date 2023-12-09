@@ -6,9 +6,11 @@ const routes = require('./routes');
 
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017/games')
-.then(() => console.log('DB Connected'))
-.catch(err => console.log(err));
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/games';
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('DB Connected'))
+  .catch(err => console.error('Error connecting to MongoDB:', err));
 
 app.use(express.urlencoded({extended: false}));
 // express.json will get AJAX requests (JSON data)
