@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const formatDateTwo = require('../utils/dateFormatterTwo');
 
 
 const userSchema = new mongoose.Schema({
@@ -25,6 +26,10 @@ const userSchema = new mongoose.Schema({
     description: {
         type: String,
         default: 'No description added yet.'
+    },
+    joinedDate: {
+        type: String,
+        default: formatDateTwo(new Date())
     }
 });
 
