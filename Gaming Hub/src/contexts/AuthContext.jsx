@@ -4,7 +4,6 @@ import { createContext, useContext, useState } from 'react';
 import useSessionStorage from '../hooks/useSessionStorage';
 import {login, register, logout} from '../services/authService';
 
-
 export const AuthContext = createContext();
 
 export default function AuthProvider ({children}) {
