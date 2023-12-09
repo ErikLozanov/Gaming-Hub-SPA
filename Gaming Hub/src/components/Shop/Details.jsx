@@ -38,7 +38,6 @@ export default function Details() {
     setIsBought(true);
     setBoughtTimes(state => state + 1);
   }
-  console.log(gameInfo);
   // const isOwner = gameInfo._ownerId._id === userId;
   const isOwner = gameInfo._ownerId && gameInfo._ownerId._id === userId;
   const ownerId = gameInfo._ownerId ? gameInfo._ownerId._id : null;
