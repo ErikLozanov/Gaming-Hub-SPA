@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 const corsOptions = {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    origin: 'http://localhost:5173',
+    origin: 'https://gaminghub-95a5e.web.app',
     credentials: true,
   };
   

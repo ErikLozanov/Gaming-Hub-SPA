@@ -1,6 +1,7 @@
 import { get,post,put,del } from './requester';
 
-const baseUrl = 'http://localhost:3030/data/comments';
+// const baseUrl = 'http://localhost:3030/data/comments';
+const baseUrl = 'https://gaming-hub-mongodb-server.onrender.com//data/comments';
 
 export const commentServiceFactory = (token) => {
     // const request = requester(token);

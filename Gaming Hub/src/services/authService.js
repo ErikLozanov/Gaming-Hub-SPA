@@ -1,6 +1,7 @@
 import * as requester from './requester';
 
-const baseUrl = `http://localhost:3030`;
+// const baseUrl = `http://localhost:3030`;
+const baseUrl = `https://gaming-hub-mongodb-server.onrender.com/`;
 
 export const login = requester.login;
 export const register = requester.register;
