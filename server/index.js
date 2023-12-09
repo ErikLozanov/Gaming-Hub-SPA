@@ -1,3 +1,5 @@
+require('dotenv').config(); // If using environment variables
+
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -6,43 +8,42 @@ const routes = require('./routes');
 
 const app = express();
 
-const mongoose = require('mongoose');
-
-const MONGODB_URI = 'mongodb://gaming-hub-mongodb-server.onrender.com:27017/games';
+// MongoDB connection
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/games';
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('DB Connected'))
-  .catch(err => console.error('Error connecting to MongoDB:', err));
+  .then(() => {
+    console.log('DB Connected');
+  })
+  .catch(err => {
+    console.error('Error connecting to MongoDB:', err);
+  });
 
-app.use(express.urlencoded({extended: false}));
-// express.json will get AJAX requests (JSON data)
-app.use(express.json());
-// const corsOptions = {
-//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//     origin: 'https://gaminghub-95a5e.web.app',
-//     credentials: true,
-//   };
-  
-//   app.use(cors(corsOptions));
+mongoose.connection.on('error', err => {
+  console.error('MongoDB connection error:', err);
+});
 
-app.use(cors({
+mongoose.connection.on('disconnected', () => {
+  console.log('MongoDB disconnected');
+});
+
+// CORS configuration
+const corsOptions = {
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   origin: 'https://gaminghub-95a5e.web.app',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}));
+  credentials: true,
+};
 
-// app.use(auth);
+app.use(cors(corsOptions));
 
-// app.use((req, res, next) => {
+// Body parsing middleware
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.setHeader('Access-Control-Allow-Methods', '*');
-//     res.setHeader('Access-Control-Allow-Headers', '*');
-
-//     next();
-// });
-
-
+// Routes
 app.use(routes);
+
+// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
