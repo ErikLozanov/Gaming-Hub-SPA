@@ -1,4 +1,4 @@
-require('dotenv').config(); // If using environment variables
+require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
@@ -8,10 +8,13 @@ const routes = require('./routes');
 
 const app = express();
 
-// MongoDB connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/games';
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 60000, // Increase the timeout to 60 seconds
+})
   .then(() => {
     console.log('DB Connected');
   })
@@ -27,7 +30,6 @@ mongoose.connection.on('disconnected', () => {
   console.log('MongoDB disconnected');
 });
 
-// CORS configuration
 const corsOptions = {
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   origin: 'https://gaminghub-95a5e.web.app',
@@ -35,15 +37,10 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
-// Body parsing middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-// Routes
 app.use(routes);
 
-// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
