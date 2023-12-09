@@ -47,7 +47,7 @@ export default function Profiles() {
       <h1>{profileData.username}</h1>
       <p>{profileData.description}</p>
         
-        <p>Joined: 2017</p>
+        <p>Joined: {profileData.joinedDate}</p>
         </div>
       </div>
       <div className={styles['main-info']}>
