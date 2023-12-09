@@ -4,11 +4,13 @@ import styles from "../Shop/Comments.module.css";
 
 import Dropdown from 'react-bootstrap/Dropdown';
 
-export default function Comment({comment, onEditComment, onDeleteComment}) {
+export default function Comment({comment, onEditComment, onDeleteComment, onReportComment}) {
 
   const { userId } = useAuthContext();
   const isMyProfile = sessionStorage.getItem('userId') === comment._ownerId._id ? '/users/my-profile/' :  `/users/${comment._ownerId._id}/profile`;
   const isOwner = userId === comment._ownerId._id;
+
+
     return (
         <div className={styles["be-comment"]}>
         <div className={styles["be-img-comment"]}>
@@ -36,7 +38,7 @@ export default function Comment({comment, onEditComment, onDeleteComment}) {
         <Dropdown.Item onClick={(e) => onEditComment(e, comment)} >Edit</Dropdown.Item>
         <Dropdown.Item onClick={(e) => onDeleteComment(e, comment)}>Delete</Dropdown.Item> 
           </>) : (
-        <Dropdown.Item href="#/action-2">Report</Dropdown.Item>
+        <Dropdown.Item onClick={(e) => onReportComment()}>Report</Dropdown.Item>
         )}
 
       </Dropdown.Menu>
