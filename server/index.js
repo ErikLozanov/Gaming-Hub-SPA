@@ -15,13 +15,18 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
 app.use(express.urlencoded({extended: false}));
 // express.json will get AJAX requests (JSON data)
 app.use(express.json());
-const corsOptions = {
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    origin: 'https://gaminghub-95a5e.web.app',
-    credentials: true,
-  };
+// const corsOptions = {
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     origin: 'https://gaminghub-95a5e.web.app',
+//     credentials: true,
+//   };
   
-  app.use(cors(corsOptions));
+//   app.use(cors(corsOptions));
+
+app.use(cors({
+  origin: 'https://gaminghub-95a5e.web.app',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}));
 
 // app.use(auth);
 
@@ -36,4 +41,7 @@ const corsOptions = {
 
 
 app.use(routes);
-app.listen(3030, () => console.log('RESTful server is listening on port 3030'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

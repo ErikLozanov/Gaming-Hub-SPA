@@ -1,6 +1,6 @@
 import { get,post,put,del } from './requester';
 
-const baseUrl = 'https://gaming-hub-mongodb-server.onrender.com//data/games';
+const baseUrl = 'https://gaming-hub-mongodb-server.onrender.com/data/games';
 // const baseUrl = 'http://localhost:3030/data/games';
 
 export const gameServiceFactory = (token) => {
