@@ -9,22 +9,25 @@ exports.getOne = async (gameId) => {
   try {
     const game = await Game.findById(gameId).populate('_ownerId').exec();
     if (!game) {
-      // Handle the case where the game with the specified ID is not found
       return null;
     }
-    console.log('hi!');
-    // Access populated fields here
     return game;
   } catch (error) {
-    // Handle errors here
     console.error(error);
-    throw error; // Rethrow the error for further handling, or handle it accordingly
+    throw error;
   }
 };
 
-exports.create = (gameData) => {
+exports.create = async (gameData) => {
+  const isValidTitle = await Game.findOne({title: gameData.title});
+  if(!isValidTitle) {
+    console.log('hi!');
+    const game = await Game.create(gameData);
+    return game;
 
-    return Game.create(gameData);
+} else {
+   throw new Error('A game with this name is already added!');
+}
 };
 
 exports.update = (gameId, gameData) => Game.findByIdAndUpdate(gameId, gameData);
