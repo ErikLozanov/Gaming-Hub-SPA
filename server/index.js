@@ -6,7 +6,9 @@ const routes = require('./routes');
 
 const app = express();
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/games';
+const mongoose = require('mongoose');
+
+const MONGODB_URI = 'mongodb://gaming-hub-mongodb-server.onrender.com:27017/games';
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('DB Connected'))
