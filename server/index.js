@@ -8,12 +8,11 @@ const routes = require('./routes');
 
 const app = express();
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/games';
-
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 60000, // Increase the timeout to 60 seconds
+  poolSize: 1, // Temporarily set poolSize to 1
 })
   .then(() => {
     console.log('DB Connected');
@@ -21,14 +20,6 @@ mongoose.connect(MONGODB_URI, {
   .catch(err => {
     console.error('Error connecting to MongoDB:', err);
   });
-
-mongoose.connection.on('error', err => {
-  console.error('MongoDB connection error:', err);
-});
-
-mongoose.connection.on('disconnected', () => {
-  console.log('MongoDB disconnected');
-});
 
 const corsOptions = {
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
