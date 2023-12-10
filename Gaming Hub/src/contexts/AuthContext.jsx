@@ -27,10 +27,18 @@ export default function AuthProvider ({children}) {
 
     const onRegisterSubmit = async (values) => {
         const {repeatPassword, ...registerData} = values;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const isValidEmail = emailRegex.test(registerData.email);
+
+        if(!isValidEmail) {
+            setRegisterError('Invalid email!')
+            return;
+        }
         if(repeatPassword !== registerData.password) {
             setRegisterError('Passwords mismatch!');
             return;
         }
+
         try {
             const result = await register(registerData);
 
