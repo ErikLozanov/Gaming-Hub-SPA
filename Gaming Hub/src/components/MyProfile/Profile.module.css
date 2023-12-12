@@ -69,7 +69,8 @@
   .verified-games {
     margin: auto;
     width: 300px;
-    hei
+    height: 250px;
+    font-size: 3rem;
   }
 
   
