@@ -19,7 +19,9 @@ export default function Trending({trendingGames}) {
           <Link to="/games">View All</Link>
         </div>
       </div>
-      {trendingGames.map(game => <TrendingGame key={game._id} game={game}/>)}
+      {trendingGames.length === 0 ? <h3>No Games Added Yet!</h3> :
+      trendingGames.map(game => <TrendingGame key={game._id} game={game}/>)
+    }
     </div>
   </div>
 </div>
