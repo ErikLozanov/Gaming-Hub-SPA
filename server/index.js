@@ -8,7 +8,7 @@ const app = express();
 
 const MONGODB_URI = 'mongodb://localhost:27017/games';
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGODB_URI)
   .then(() => console.log('DB Connected'))
   .catch(err => console.error('Error connecting to MongoDB:', err));
 
