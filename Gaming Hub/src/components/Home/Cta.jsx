@@ -32,7 +32,7 @@ export default function Cta() {
               <div className="section-heading">
                 <h6>NEWSLETTER</h6>
                 <h2>
-                  Get Up To $100 Off Just Buy <em>Subscribe</em> Newsletter!
+                  Get Up To $50 Off Just Buy <em>Subscribe</em> Newsletter!
                 </h2>
               </div>
               <div className="search-input">
