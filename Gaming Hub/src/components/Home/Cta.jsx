@@ -11,7 +11,7 @@ export default function Cta() {
               <div className="section-heading">
                 <h6>Our Shop</h6>
                 <h2>
-                  Go Pre-Order Buy &amp; Get Best <em>Prices</em> For You!
+                  Go Pre-Order Buy &amp; Get Best <em>Prices</em> For You Today!
                 </h2>
               </div>
               <p>
