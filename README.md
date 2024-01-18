@@ -45,3 +45,7 @@ The project is designed to scale efficiently to accommodate increased user activ
 ![Capture2](https://github.com/ErikLozanov/Gaming-Hub-SPA/assets/122800063/8c6e3db9-0800-416f-8940-608e010f9473)
 
 ![Capture1](https://github.com/ErikLozanov/Gaming-Hub-SPA/assets/122800063/8926dc18-619d-488a-9d66-b8c1a6b5df61)
+![ProfileView](https://github.com/ErikLozanov/Gaming-Hub-SPA/assets/122800063/0df9eda4-adc3-42eb-9ff1-5a292277d176)
+![CommentView](https://github.com/ErikLozanov/Gaming-Hub-SPA/assets/122800063/151a181c-dcaf-45de-bd51-f28027738f68)
+
+
